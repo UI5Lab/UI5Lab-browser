@@ -85,7 +85,7 @@ sap.ui.define([
 					this._showSample(sObjectId);
 				}.bind(this));
 
-				oFlexibleLayout.setLayout(sap.f.LayoutType.TwoColumnsMidExpanded);
+				oFlexibleLayout.setLayout(sap.f.LayoutType.ThreeColumnsEndExpanded);
 			},
 
 			/**

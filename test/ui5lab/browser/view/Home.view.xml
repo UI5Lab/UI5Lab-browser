@@ -1,0 +1,63 @@
+<mvc:View
+		controllerName="ui5lab.browser.controller.Home"
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+		xmlns:layout="sap.ui.layout"
+		xmlns:mvc="sap.ui.core.mvc">
+
+	<Page
+			id="page">
+		<customHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<core:Icon src="sap-icon://lab"/>
+				<Title text="{i18n>homeViewTitle}"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<Panel
+					class="sapUiResponsiveMargin"
+					width="auto">
+					<headerToolbar>
+						<Toolbar height="3rem">
+							<Title text="{homeView>/title}"/>
+							<ToolbarSpacer />
+							<Button
+									enabled="false"
+									icon="sap-icon://list"
+									press="onShowList"/>
+							<ToggleButton
+									pressed="true"
+									icon="sap-icon://grid"
+									press="onShowOverview"/>
+						</Toolbar>
+					</headerToolbar>
+					<content>
+						<layout:BlockLayout
+								id="headerLayout"
+								background="Light">
+							<layout:BlockLayoutRow content="{
+										path: 'homeView>/libraries'
+									}">
+								<core:Fragment fragmentName="ui5lab.browser.view.BlockLayoutCell" type="XML" />
+							</layout:BlockLayoutRow>
+						</layout:BlockLayout>
+					</content>
+			</Panel>
+		</content>
+		<MessageStrip
+				class="sapUiResponsiveMargin"
+				text="UI5Lab is a community-driven custom repository. Feel free to contribute and list your projects:"
+				type="Information"
+				showIcon="true"
+				customIcon="sap-icon://sap-ui5">
+			<link>
+				<Link text="UI5Lab"
+						target="_blank"
+						href="https://github.com/openui5/UI5Lab" />
+			</link>
+		</MessageStrip>
+	</Page>
+
+</mvc:View>

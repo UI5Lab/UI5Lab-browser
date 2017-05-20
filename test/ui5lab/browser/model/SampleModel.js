@@ -139,6 +139,10 @@ sap.ui.define([
 
 			var aLibraryNames = Object.keys(aLibraryNames);
 			for (var i = 0; i < aLibraryNames.length; i++) {
+				// store library information
+				oMetadata[aLibraryNames[i]].id = aLibraryNames[i];
+				oModelData.libraries.push(oMetadata[aLibraryNames[i]]);
+				// separately index assets and samples
 				var aEntities = Object.keys(oMetadata[aLibraryNames[i]].content);
 				for (var j = 0; j < aEntities.length; j++) {
 					var oAsset = oMetadata[aLibraryNames[i]].content[aEntities[j]];

@@ -51,6 +51,9 @@ sap.ui.define([
 					// Restore original busy indicator delay for sampleList's table
 					oViewModel.setProperty("/tableBusyDelay", iOriginalBusyDelay);
 				});
+
+				this.getRouter().getRoute("sampleList").attachPatternMatched(this._onSampleListMatched, this);
+				this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
 			},
 
 			/* =========================================================== */
@@ -158,6 +161,43 @@ sap.ui.define([
 			/* =========================================================== */
 
 			/**
+			 * Binds the view to the selected library and exapnds mid column
+			 * @function
+			 * @param {sap.ui.base.Event} oEvent pattern match event in route 'sampleList'
+			 * @private
+			 */
+			_onSampleListMatched: function (oEvent) {
+				var sLibraryId =  oEvent.getParameter("arguments").libraryId;
+				var oFlexibleLayout = this.getView().getParent().getParent();
+
+				this.getModel().loaded().then( function() {
+					// TODO: put this as system filter
+					var oFilter = new Filter("library", FilterOperator.Contains, sLibraryId);
+
+					this._oTable.getBinding("items").filter(oFilter);
+				}.bind(this));
+
+				oFlexibleLayout.setLayout(sap.f.LayoutType.TwoColumnsMidExpanded);
+			},
+
+			/**
+			 * Binds the view to the selected library when object was selected
+			 * @function
+			 * @param {sap.ui.base.Event} oEvent pattern match event in route 'sampleList'
+			 * @private
+			 */
+			_onObjectMatched: function (oEvent) {
+				var sLibraryId =  oEvent.getParameter("arguments").libraryId;
+
+				this.getModel().loaded().then( function() {
+					// TODO: put this as system filter
+					var oFilter = new Filter("library", FilterOperator.Contains, sLibraryId);
+
+					this._oTable.getBinding("items").filter(oFilter);
+				}.bind(this));
+			},
+
+			/**
 			 * Shows the selected item on the object page
 			 * On phones a additional history entry is created
 			 * @param {sap.m.ObjectListItem} oItem selected Item
@@ -165,6 +205,7 @@ sap.ui.define([
 			 */
 			_showObject : function (oItem) {
 				this.getRouter().navTo("object", {
+					libraryId: oItem.getBindingContext().getProperty("library"),
 					objectId: oItem.getBindingContext().getProperty("id")
 				});
 			},

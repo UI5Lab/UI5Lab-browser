@@ -1,0 +1,53 @@
+<core:FragmentDefinition
+		xmlns:core="sap.ui.core"
+		xmlns:layout="sap.ui.layout"
+		xmlns="sap.m">
+	<layout:BlockLayoutCell
+			class="sapUiContentPadding"
+			width="2">
+		<layout:VerticalLayout width="100%">
+			<core:Icon
+					src="{homeView>icon}"
+					size="2rem"
+					color="Default">
+			</core:Icon>
+			<Title
+					level="H1"
+					titleStyle="H1"
+					text="{homeView>name}"
+					class="sapUiTinyMarginTop"/>
+			<Text
+					text="{homeView>description}"
+					class="sapUiTinyMarginBottom"/>
+			<Link
+					press="onShowLibrary"
+					text="{i18n>homeShowLibrary}"
+					class="sapUiSmallMarginBottom"
+					emphasized="true"/>
+			<Label
+				text="{i18n>homeFurtherLinks}"
+				design="Bold"/>
+			<layout:VerticalLayout
+				class="sapUiTinyMarginBottom"
+				visible="{= ${homeView>source}.length > 0 || ${homeView>documentation}.length > 0 || ${homeView>demo}.length > 0 ? true : false }">
+				<Link
+						href="{homeView>source}"
+						visible="{= ${homeView>source}.length === 0 ? false : true }"
+						target="_blank"
+						text="Source Code"/>
+				<Link
+						href="{homeView>documentation}"
+						target="_blank"
+						text="Documentation"/>
+				<Link
+						href="{homeView>demo}"
+						visible="{= ${homeView>demo}.length === 0 ? false : true }"
+						target="_blank"
+						text="Demo"/>
+			</layout:VerticalLayout>
+			<Label
+					text="{homeView>id}"
+					class="sapUiTinyMarginEnd"/>
+		</layout:VerticalLayout>
+	</layout:BlockLayoutCell>
+</core:FragmentDefinition>

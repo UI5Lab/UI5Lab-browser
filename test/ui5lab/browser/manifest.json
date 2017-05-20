@@ -88,24 +88,35 @@
 			"routes": [
 				{
 					"pattern": "",
-					"name": "sampleList",
-					"target": ["sampleList"]
+					"name": "home",
+					"target": ["home"]
 				},
 				{
-					"pattern": "Objects/{objectId}",
+					"pattern": "Samples/{libraryId}",
+					"name": "sampleList",
+					"target": ["sampleList", "home"]
+				},
+				{
+					"pattern": "Samples/{libraryId}/Sample/{objectId}",
 					"name": "object",
-					"target": ["object", "sampleList"]
+					"target": ["object", "sampleList", "home"]
 				}
 			],
 
 			"targets": {
+				"home": {
+					"viewName": "Home",
+					"viewId": "home",
+					"viewLevel": 1
+				},
 				"sampleList": {
+					"controlAggregation": "midColumnPages",
 					"viewName": "SampleList",
 					"viewId": "sampleList",
 					"viewLevel": 1
 				},
 				"object": {
-					"controlAggregation": "midColumnPages",
+					"controlAggregation": "endColumnPages",
 					"viewName": "Object",
 					"viewId": "object",
 					"viewLevel": 2
