@@ -1,0 +1,20 @@
+{
+  "name": "ui5lab-browser",
+  "version": "0.1.0",
+  "description": "A browser to display custom libraries and controls for display on the UI5Lab homepage and testing during development",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified. Please add some.\" && exit 1",
+    "postinstall": "bower install",
+    "start": "grunt"
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-eslint": "^19.0.0",
+    "grunt-openui5": "^0.12.0"
+  }
+}

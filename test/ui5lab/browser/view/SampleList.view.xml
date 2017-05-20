@@ -1,0 +1,87 @@
+<mvc:View
+	controllerName="ui5lab.browser.controller.SampleList"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<Page
+		id="page"
+		navButtonPress="onNavBack"
+		showNavButton="true"
+		floatingFooter="true"
+		showFooter="true">
+		<customHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<core:Icon src="sap-icon://lab"/>
+				<Title text="{i18n>sampleListViewTitle}"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<Table
+				id="table"
+				width="auto"
+				class="sapUiResponsiveMargin"
+				items="{
+					path: '/samples',
+					sorter: {
+						path: 'library',
+						group: true
+					}
+				}"
+				noDataText="{sampleListView>/tableNoDataText}"
+				busyIndicatorDelay="{sampleListView>/tableBusyDelay}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{sampleListView>/sampleListTableTitle}"/>
+						<ToolbarSpacer />
+						<SearchField
+							id="searchField"
+							tooltip="{i18n>sampleListSearchTooltip}"
+							liveChange="onSearch"
+							width="auto">
+						</SearchField>
+					</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="nameColumn">
+						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					</Column>
+					<Column id="DescriptionColumn">
+						<Text text="{i18n>tableDescriptionColumnTitle}" id="descriptionColumnTitle"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press="onPress">
+						<cells>
+							<ObjectIdentifier title="{name}"/>
+							<Text text="{description}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<ToggleButton
+						icon="sap-icon://group-2"
+						tooltip="{i18n>groupByLibraryTooltip}"
+						pressed="true"
+						press="onToggleGroupByLibrary"/>
+
+			</Toolbar>
+		</footer>
+	</Page>
+
+</mvc:View>
