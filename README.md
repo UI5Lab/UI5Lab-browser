@@ -1,7 +1,7 @@
 # UI5Lab-browser
 A browser to display custom libraries and controls for display on the UI5Lab homepage and testing during development
 
-## Concenpt
+## Concept
 
 The browser is a draft for displaying libraries and its content based on metadata that is located inside the library projects (see TODO section for improvment ideas). As such, the logic is similar for both use cases:
 * Displaying a library during library development at design time
