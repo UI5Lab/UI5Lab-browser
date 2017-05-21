@@ -32,7 +32,7 @@ sap.ui.define([
 				// keeps the search state
 				this._oTableSearchState = [];
 
-				// Model used to manipulate control states
+				// local model used to manipulate control states
 				oViewModel = new JSONModel({
 					title: this.getResourceBundle().getText("sampleListViewTitle"),
 					sampleListTableTitle : this.getResourceBundle().getText("sampleListTableTitle"),

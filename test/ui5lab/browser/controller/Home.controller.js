@@ -22,7 +22,7 @@ sap.ui.define([
 			onInit: function () {
 				var oViewModel;
 
-				// Model used to manipulate control states
+				// local model used to manipulate control states
 				oViewModel = new JSONModel({
 					title: this.getResourceBundle().getText("homePanelTitle"),
 					libraries: [
@@ -35,6 +35,7 @@ sap.ui.define([
 				});
 				this.setModel(oViewModel, "homeView");
 
+				this.getRouter().getTarget("home").attachEventOnce("display", this._onHomeTargetMatched, this);
 				this.getOwnerComponent().samplesLoaded().then(this._fillLayout.bind(this));
 			},
 
@@ -42,26 +43,45 @@ sap.ui.define([
 			/* event handlers                                              */
 			/* =========================================================== */
 
-			onShowLibrary: function (oEvent) {
-				var oLink =  oEvent.getSource(),
-					// TODO: do this properly with custom data
-					sNamespace = oLink.getParent().getContent().pop().getText();
+			/**
+			 * Toggles between grid and table view of the libraries
+			 * @param {sap.ui.base.Event} oEvent The SegmentedButton select event
+			 */
+			onSelect: function (oEvent) {
+				var sKey = oEvent.getParameter("key");
 
-				this.getRouter().navTo("sampleList", {
-					libraryId: sNamespace
-				});
+				this.byId("projects").removeAllContent();
+				this.getRouter().getTarget("home" + sKey).display();
 			},
+
+
 
 			/* =========================================================== */
 			/* internal methods                                            */
 			/* =========================================================== */
 
+			/**
+			 * Called once to display the default view on all entry points
+			 * @private
+			 */
+			_onHomeTargetMatched: function () {
+				if (this.byId("projects").getContent().length === 0) {
+					this.getRouter().getTarget("homeGrid").display();
+				}
+			},
+
+			/**
+			 * Set up of the local view model to display libraries and the title on the home screen
+			 * @private
+			 */
 			_fillLayout: function () {
 				var oViewModel = this.getModel("homeView"),
 					oSampleModel = this.getModel();
 
-				oViewModel.setProperty("/libraries", oSampleModel.getData().libraries);
-				oViewModel.setProperty("/title", this.getResourceBundle().getText("homePanelTitleCount", [oSampleModel.getData().libraries.length]));
+				if (oSampleModel) {
+					oViewModel.setProperty("/libraries", oSampleModel.getData().libraries);
+					oViewModel.setProperty("/title", this.getResourceBundle().getText("homePanelTitleCount", [oSampleModel.getData().libraries.length]));
+				}
 			}
 		});
 	}

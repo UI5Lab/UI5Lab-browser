@@ -1,0 +1,17 @@
+<mvc:View
+		controllerName="ui5lab.browser.controller.HomeGrid"
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+		xmlns:layout="sap.ui.layout"
+		xmlns:mvc="sap.ui.core.mvc">
+	<layout:BlockLayout
+			id="headerLayout"
+			background="Light">
+		<layout:BlockLayoutRow
+				content="{
+					path: 'homeView>/libraries'
+				}">
+			<core:Fragment fragmentName="ui5lab.browser.view.BlockLayoutCell" type="XML" />
+		</layout:BlockLayoutRow>
+	</layout:BlockLayout>
+</mvc:View>

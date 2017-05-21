@@ -1,0 +1,71 @@
+<mvc:View
+		controllerName="ui5lab.browser.controller.HomeTable"
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+		xmlns:layout="sap.ui.layout"
+		xmlns:mvc="sap.ui.core.mvc">
+
+	<Table
+			id="table"
+			width="auto"
+			items="{
+				path: 'homeView>/libraries'
+			}"
+			noDataText="{sampleListView>/tableNoDataText}"
+			busyIndicatorDelay="{sampleListView>/tableBusyDelay}"
+			growing="true"
+			growingScrollToLoad="true">
+
+		<columns>
+			<Column id="nameColumn">
+				<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+			</Column>
+			<Column id="DescriptionColumn" demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>tableDescriptionColumnTitle}" id="descriptionColumnTitle"/>
+			</Column>
+			<Column id="InfoColumn" demandPopin="true" minScreenWidth="Desktop">
+				<Text text="{i18n>tableInfoColumnTitle}" id="infoColumnTitle"/>
+			</Column>
+		</columns>
+
+		<items>
+			<ColumnListItem
+					type="Navigation"
+					press="onShowLibrary">
+				<cells>
+					<layout:HorizontalLayout>
+						<core:Icon
+								class="sapUiTinyMarginEnd"
+								src="{homeView>icon}"
+								size="2rem"
+								color="Default">
+						</core:Icon>
+						<layout:VerticalLayout>
+							<Label design="Bold" text="{homeView>name}"/>
+							<Text text="{homeView>id}"/>
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+					<Text text="{homeView>description}"/>
+					<layout:VerticalLayout
+							visible="{= ${homeView>source}.length > 0 || ${homeView>documentation}.length > 0 || ${homeView>demo}.length > 0 ? true : false }">
+						<Link
+								href="{homeView>source}"
+								visible="{= ${homeView>source}.length === 0 ? false : true }"
+								target="_blank"
+								text="Source Code"/>
+						<Link
+								href="{homeView>documentation}"
+								target="_blank"
+								text="Documentation"/>
+						<Link
+								href="{homeView>demo}"
+								visible="{= ${homeView>demo}.length === 0 ? false : true }"
+								target="_blank"
+								text="Demo"/>
+					</layout:VerticalLayout>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+</mvc:View>

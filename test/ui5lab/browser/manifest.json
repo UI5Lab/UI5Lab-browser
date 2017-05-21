@@ -109,6 +109,20 @@
 					"viewId": "home",
 					"viewLevel": 1
 				},
+				"homeGrid": {
+					"parent": "home",
+					"viewName": "HomeGrid",
+					"viewId": "homeGrid",
+					"controlId": "projects",
+					"controlAggregation": "content"
+				},
+				"homeTable": {
+					"parent": "home",
+					"viewName": "HomeTable",
+					"viewId": "homeTable",
+					"controlId": "projects",
+					"controlAggregation": "content"
+				},
 				"sampleList": {
 					"controlAggregation": "midColumnPages",
 					"viewName": "SampleList",

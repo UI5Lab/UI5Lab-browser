@@ -2,7 +2,6 @@
 		controllerName="ui5lab.browser.controller.Home"
 		xmlns="sap.m"
 		xmlns:core="sap.ui.core"
-		xmlns:layout="sap.ui.layout"
 		xmlns:mvc="sap.ui.core.mvc">
 
 	<Page
@@ -17,32 +16,25 @@
 		</customHeader>
 		<content>
 			<Panel
+					id="projects"
 					class="sapUiResponsiveMargin"
 					width="auto">
 					<headerToolbar>
 						<Toolbar height="3rem">
 							<Title text="{homeView>/title}"/>
 							<ToolbarSpacer />
-							<Button
-									enabled="false"
-									icon="sap-icon://list"
-									press="onShowList"/>
-							<ToggleButton
-									pressed="true"
-									icon="sap-icon://grid"
-									press="onShowOverview"/>
+							<SegmentedButton
+									selectedKey="grid"
+									select="onSelect">
+								<items>
+									<SegmentedButtonItem icon="sap-icon://grid" key="Grid"/>
+									<SegmentedButtonItem icon="sap-icon://list" key="Table"/>
+								</items>
+							</SegmentedButton>
 						</Toolbar>
 					</headerToolbar>
 					<content>
-						<layout:BlockLayout
-								id="headerLayout"
-								background="Light">
-							<layout:BlockLayoutRow content="{
-										path: 'homeView>/libraries'
-									}">
-								<core:Fragment fragmentName="ui5lab.browser.view.BlockLayoutCell" type="XML" />
-							</layout:BlockLayoutRow>
-						</layout:BlockLayout>
+						<!-- filled by routing, either grid or table based on user's choice  -->
 					</content>
 			</Panel>
 		</content>
