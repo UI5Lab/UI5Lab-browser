@@ -34,6 +34,7 @@ sap.ui.define([
 
 				// Model used to manipulate control states
 				oViewModel = new JSONModel({
+					title: this.getResourceBundle().getText("sampleListViewTitle"),
 					sampleListTableTitle : this.getResourceBundle().getText("sampleListTableTitle"),
 					saveAsTileTitle: this.getResourceBundle().getText("sampleListViewTitle"),
 					shareOnJamTitle: this.getResourceBundle().getText("sampleListViewTitle"),
@@ -72,6 +73,7 @@ sap.ui.define([
 			onUpdateFinished : function (oEvent) {
 				// update the sampleList's object counter after the table update
 				var sTitle,
+					oViewModel = this.getModel("sampleListView"),
 					oTable = oEvent.getSource(),
 					iTotalItems = oEvent.getParameter("total");
 				// only update the counter if the length is final and
@@ -81,7 +83,7 @@ sap.ui.define([
 				} else {
 					sTitle = this.getResourceBundle().getText("sampleListTableTitle");
 				}
-				this.getModel("sampleListView").setProperty("/sampleListTableTitle", sTitle);
+				oViewModel.setProperty("/sampleListTableTitle", sTitle);
 			},
 
 			/**
@@ -96,15 +98,17 @@ sap.ui.define([
 
 
 			/**
-			 *
+			 * Groups the sample list by it's assets or shows it alphabetically if deselected
 			 * @param {sap.ui.base.Event} oEvent the toggleButton press event
 			 */
-			onToggleGroupByLibrary : function (oEvent) {
+			onToggleGroupByAsset: function (oEvent) {
 				var oBinding = this._oTable.getBinding("items");
 
 				if (!this.__fnGroup) {
 					this.__fnGroup = oBinding.aSorters[0].fnGroup;
 				}
+				// toggle between asset grouping and simple list sorted alphabetically by name
+				oBinding.aSorters[0].sPath = (oEvent.getParameter("pressed") ? "asset" : "name");
 				oBinding.aSorters[0].fnGroup  = (oEvent.getParameter("pressed") ? this.__fnGroup : null);
 				oBinding.aSorters[0].vGroup = oEvent.getParameter("pressed");
 				oBinding.sort(oBinding.aSorters);
@@ -156,6 +160,23 @@ sap.ui.define([
 				this._oTable.getBinding("items").refresh();
 			},
 
+			/**
+			 * Group header factory for the sample list to display asset information
+			 * @param {object} oGroup context information on the group item
+			 * @return {sap.m.GroupHeaderListItem} Hedaer item with the name of the asset and its description
+			 */
+			getGroupHeader: function (oGroup){
+				var oAsset = this.getModel().getData().assets.filter(function (oAsset) {
+					return oAsset.id === oGroup.key;
+				}).pop();
+
+				// add asset description if possible
+				return new sap.m.GroupHeaderListItem({
+					title: oGroup.key + (oAsset ? " - " + oAsset.description : ""),
+					upperCase: false
+				});
+			},
+
 			/* =========================================================== */
 			/* internal methods                                            */
 			/* =========================================================== */
@@ -167,8 +188,9 @@ sap.ui.define([
 			 * @private
 			 */
 			_onSampleListMatched: function (oEvent) {
-				var sLibraryId =  oEvent.getParameter("arguments").libraryId;
-				var oFlexibleLayout = this.getView().getParent().getParent();
+				var sLibraryId =  oEvent.getParameter("arguments").libraryId,
+					oViewModel = this.getModel("sampleListView"),
+					oFlexibleLayout = this.getView().getParent().getParent();
 
 				this.getModel().loaded().then( function() {
 					// TODO: put this as system filter
@@ -176,6 +198,7 @@ sap.ui.define([
 
 					this._oTable.getBinding("items").filter(oFilter);
 				}.bind(this));
+				oViewModel.setProperty("/title", this.getResourceBundle().getText("sampleListViewTitle", [sLibraryId]));
 
 				oFlexibleLayout.setLayout(sap.f.LayoutType.TwoColumnsMidExpanded);
 			},

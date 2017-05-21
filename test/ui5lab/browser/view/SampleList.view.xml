@@ -13,8 +13,7 @@
 		<customHeader>
 			<Toolbar>
 				<ToolbarSpacer/>
-				<core:Icon src="sap-icon://lab"/>
-				<Title text="{i18n>sampleListViewTitle}"/>
+				<Title text="{sampleListView>/title}"/>
 				<ToolbarSpacer/>
 			</Toolbar>
 		</customHeader>
@@ -26,9 +25,10 @@
 				items="{
 					path: '/samples',
 					sorter: {
-						path: 'library',
+						path: 'asset',
 						group: true
-					}
+					},
+					 groupHeaderFactory: '.getGroupHeader'
 				}"
 				noDataText="{sampleListView>/tableNoDataText}"
 				busyIndicatorDelay="{sampleListView>/tableBusyDelay}"
@@ -50,7 +50,7 @@
 				</headerToolbar>
 
 				<columns>
-					<Column id="nameColumn">
+					<Column id="nameColumn" width="33%">
 						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
 					</Column>
 					<Column id="DescriptionColumn">
@@ -78,7 +78,7 @@
 						icon="sap-icon://group-2"
 						tooltip="{i18n>groupByLibraryTooltip}"
 						pressed="true"
-						press="onToggleGroupByLibrary"/>
+						press="onToggleGroupByAsset"/>
 
 			</Toolbar>
 		</footer>
