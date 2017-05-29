@@ -66,10 +66,10 @@ module.exports = function(grunt) {
 		openui5_preload: {
 			component: {
 				options: {
-					resources: '<%= dir.src %>',
-					dest: '<%= dir.dist %>/resources'
+					resources: '<%= dir.test %>',
+					dest: '<%= dir.dist %>/test-resources'
 				},
-				libraries: true
+				components: true
 			}
 		},
 
