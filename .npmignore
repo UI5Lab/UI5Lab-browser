@@ -1,0 +1,6 @@
+# exclude development artifacts
+test
+node_modules
+bower_components
+.editorconfig
+.eslintrcn

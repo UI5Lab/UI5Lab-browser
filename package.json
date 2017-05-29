@@ -2,7 +2,7 @@
   "name": "ui5lab-browser",
   "version": "0.1.0",
   "description": "A browser to display custom libraries and controls for display on the UI5Lab homepage and testing during development",
-  "private": true,
+  "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified. Please add some.\" && exit 1",
     "postinstall": "bower install",
