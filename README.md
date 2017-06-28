@@ -15,7 +15,7 @@ The browser is a draft for displaying libraries and its content based on metadat
 
 ## TODOs
 * Replace global libraries.json with a simple (nodejs) discovery service that finds all libraries and samples currently available and returns a json with all relevant information in json format
-* Alternative: read metadata vom library.js, package.json, and bower.json or wait for UI5 tooling to do this for us
+* Alternative: read metadata from library.js, package.json, and bower.json or wait for UI5 tooling to do this for us
 
 ## Getting started
 

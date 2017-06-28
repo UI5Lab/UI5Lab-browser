@@ -36,10 +36,8 @@ sap.ui.define([
 				oViewModel = new JSONModel({
 					title: this.getResourceBundle().getText("sampleListViewTitle"),
 					sampleListTableTitle : this.getResourceBundle().getText("sampleListTableTitle"),
-					saveAsTileTitle: this.getResourceBundle().getText("sampleListViewTitle"),
-					shareOnJamTitle: this.getResourceBundle().getText("sampleListViewTitle"),
-					shareSendEmailSubject: this.getResourceBundle().getText("shareSendEmailSampleListSubject"),
-					shareSendEmailMessage: this.getResourceBundle().getText("shareSendEmailSampleListMessage", [location.href]),
+					shareSendEmailSubject: this.getResourceBundle().getText("shareSendEmailSampleListSubject", "..."),
+					shareSendEmailMessage: this.getResourceBundle().getText("shareSendEmailSampleListMessage", location.href),
 					tableNoDataText : this.getResourceBundle().getText("tableNoDataText"),
 					tableBusyDelay : 0
 				});
@@ -198,7 +196,9 @@ sap.ui.define([
 
 					this._oTable.getBinding("items").filter(oFilter);
 				}.bind(this));
-				oViewModel.setProperty("/title", this.getResourceBundle().getText("sampleListViewTitle", [sLibraryId]));
+				oViewModel.setProperty("/title", this.getResourceBundle().getText("sampleListViewTitle", sLibraryId));
+				this.getModel("sampleListView").setProperty("shareSendEmailSubject", this.getResourceBundle().getText("shareSendEmailSampleListSubject", sLibraryId));
+				this.getModel("sampleListView").setProperty("shareSendEmailMessage", this.getResourceBundle().getText("shareSendEmailSampleListMessage", location.href));
 
 				oFlexibleLayout.setLayout(sap.f.LayoutType.TwoColumnsMidExpanded);
 			},

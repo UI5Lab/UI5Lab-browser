@@ -48,7 +48,7 @@ sap.ui.define([
 			 * @public
 			 */
 			onShareEmailPress : function () {
-				var oViewModel = (this.getModel("objectView") || this.getModel("sampleListView"));
+				var oViewModel = this.getModel("sampleListView");
 				sap.m.URLHelper.triggerEmail(
 					null,
 					oViewModel.getProperty("/shareSendEmailSubject"),

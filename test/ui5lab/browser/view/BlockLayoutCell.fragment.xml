@@ -46,7 +46,10 @@
 						text="Demo"/>
 			</layout:VerticalLayout>
 			<Label
-					text="{homeView>id}"
+					text="Namespace: {homeView>id}"
+					class="sapUiTinyMarginEnd"/>
+			<Label
+					text="License: {homeView>license}"
 					class="sapUiTinyMarginEnd"/>
 		</layout:VerticalLayout>
 	</layout:BlockLayoutCell>

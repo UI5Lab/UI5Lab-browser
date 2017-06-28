@@ -80,6 +80,11 @@
 						pressed="true"
 						press="onToggleGroupByAsset"/>
 
+				<Button
+					icon="sap-icon://email"
+					tooltip="{i18n>shareSendEmailSampleListTooltip}"
+					press="onShareEmailPress"/>
+
 			</Toolbar>
 		</footer>
 	</Page>

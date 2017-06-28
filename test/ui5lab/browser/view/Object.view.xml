@@ -9,7 +9,7 @@
 		id="page"
 		navButtonPress="onNavBack"
 		showNavButton="true"
-		floatingFooter="true"
+		showFooter="false"
 		title="{
 			parts: [
 				'i18n>objectTitle',
@@ -29,11 +29,6 @@
 			</ObjectHeader>
 			<browser:IframeSample href="{objectView>/href}"/>
  		</semantic:content>
-
-		<semantic:sendEmailAction>
-			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
-		</semantic:sendEmailAction>
-
 
 	</semantic:FullscreenPage>
 

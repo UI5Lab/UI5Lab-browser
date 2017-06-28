@@ -23,6 +23,9 @@
 			<Column id="DescriptionColumn" demandPopin="true" minScreenWidth="Tablet">
 				<Text text="{i18n>tableDescriptionColumnTitle}" id="descriptionColumnTitle"/>
 			</Column>
+			<Column id="LicenseColumn" demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>tableLicenseColumnTitle}" id="licenszeColumnTitle"/>
+			</Column>
 			<Column id="InfoColumn" demandPopin="true" minScreenWidth="Desktop">
 				<Text text="{i18n>tableInfoColumnTitle}" id="infoColumnTitle"/>
 			</Column>
@@ -46,6 +49,7 @@
 						</layout:VerticalLayout>
 					</layout:HorizontalLayout>
 					<Text text="{homeView>description}"/>
+					<Text text="{homeView>license}"/>
 					<layout:VerticalLayout
 							visible="{= ${homeView>source}.length > 0 || ${homeView>documentation}.length > 0 || ${homeView>demo}.length > 0 ? true : false }">
 						<Link

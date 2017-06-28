@@ -40,14 +40,14 @@
 		</content>
 		<MessageStrip
 				class="sapUiResponsiveMargin"
-				text="UI5Lab is a community-driven custom repository. Feel free to contribute and list your projects:"
+				text="UI5Lab is a community-driven custom repository. This sample browser is filled automatically with the individual packages of the UI5lab community projects. The samples and codebase of each community project is owned, governed and maintained by the individual repository owners. For more information check the corresponding project repository. Feel free to contribute and list your projects:"
 				type="Information"
 				showIcon="true"
 				customIcon="sap-icon://sap-ui5">
 			<link>
 				<Link text="UI5Lab"
-						target="_blank"
-						href="https://github.com/openui5/UI5Lab" />
+					target="_blank"
+					href="https://github.com/UI5Lab/UI5Lab-central" />
 			</link>
 		</MessageStrip>
 	</Page>
