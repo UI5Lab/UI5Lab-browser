@@ -15,6 +15,8 @@
 				<ToolbarSpacer/>
 				<Title text="{sampleListView>/title}"/>
 				<ToolbarSpacer/>
+				<Button icon="sap-icon://{= ${sampleListView>/fullscreen} === true ? 'exit-' : '' }full-screen" press="toggleFullScreen" tooltip="{= ${sampleListView>/fullScreen} === false ? 'Enter' : 'Exit' } Full Screen Mode"/>
+				<Button icon="sap-icon://decline" press="onClose" tooltip="Close column"/>
 			</Toolbar>
 		</customHeader>
 		<content>

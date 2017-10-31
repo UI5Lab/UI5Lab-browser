@@ -34,6 +34,7 @@ sap.ui.define([
 
 				// local model used to manipulate control states
 				oViewModel = new JSONModel({
+					fullscreen: false,
 					title: this.getResourceBundle().getText("sampleListViewTitle"),
 					sampleListTableTitle : this.getResourceBundle().getText("sampleListTableTitle"),
 					shareSendEmailSubject: this.getResourceBundle().getText("shareSendEmailSampleListSubject", "..."),
@@ -94,6 +95,31 @@ sap.ui.define([
 				this._showObject(oEvent.getSource());
 			},
 
+			/**
+			 * Toggles fullscreen mode for the current page
+			 */
+			toggleFullScreen : function () {
+				var oViewModel = this.getModel("sampleListView");
+				var bFullscreen = oViewModel.getProperty("/fullscreen");
+				var oFlexibleLayout = this.getView().getParent().getParent();
+
+				oViewModel.setProperty("/fullscreen", !bFullscreen);
+				if (!bFullscreen) {
+					oFlexibleLayout.setLayout(sap.f.LayoutType.MidColumnFullScreen);
+				} else {
+					oFlexibleLayout.setLayout(sap.f.LayoutType.TwoColumnsMidExpanded);
+				}
+			},
+
+			/**
+			 * Closes the current page and returns to the parent route
+			 */
+			onClose : function (oEvent) {
+				var oFlexibleLayout = this.getView().getParent().getParent();
+
+				oFlexibleLayout.setLayout(sap.f.LayoutType.OneColumn);
+				this.getRouter().navTo("sampleList");
+			},
 
 			/**
 			 * Groups the sample list by it's assets or shows it alphabetically if deselected

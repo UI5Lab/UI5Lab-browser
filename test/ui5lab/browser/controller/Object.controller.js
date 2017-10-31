@@ -30,6 +30,7 @@ sap.ui.define([
 				// between the busy indication for loading the view's meta data
 				var iOriginalBusyDelay,
 					oViewModel = new JSONModel({
+						fullscreen : false,
 						busy : true,
 						delay : 0
 					});
@@ -67,6 +68,34 @@ sap.ui.define([
 				}
 			},
 
+			/**
+			 * Toggles fullscreen mode for the current page
+			 */
+			toggleFullScreen : function () {
+				var oViewModel = this.getModel("objectView");
+				var bFullscreen = oViewModel.getProperty("/fullscreen");
+				var oFlexibleLayout = this.getView().getParent().getParent();
+
+				oViewModel.setProperty("/fullscreen", !bFullscreen);
+				if (!bFullscreen) {
+					oFlexibleLayout.setLayout(sap.f.LayoutType.EndColumnFullScreen);
+				} else {
+					oFlexibleLayout.setLayout(sap.f.LayoutType.ThreeColumnsEndExpanded);
+				}
+			},
+
+			/**
+			 * Closes the current page and returns to the parent route
+			 */
+			onClose : function (oEvent) {
+				var oFlexibleLayout = this.getView().getParent().getParent();
+
+				oFlexibleLayout.setLayout(sap.f.LayoutType.OneColumn);
+				this.getRouter().navTo("sampleList", {
+					libraryId : this._sLibraryId
+				});
+			},
+
 			/* =========================================================== */
 			/* internal methods                                            */
 			/* =========================================================== */
@@ -80,6 +109,9 @@ sap.ui.define([
 			_onObjectMatched : function (oEvent) {
 				var sObjectId =  oEvent.getParameter("arguments").objectId;
 				var oFlexibleLayout = this.getView().getParent().getParent();
+
+				// store library id to be able to navigate back on close
+				this._sLibraryId = oEvent.getParameter("arguments").libraryId
 
 				this.getModel().loaded().then( function() {
 					this._showSample(sObjectId);
