@@ -25,7 +25,7 @@
 							<ToolbarSpacer />
 							<!-- width: bugfix for faulty toolbar rendering -->
 							<SegmentedButton
-									width="4.0625rem"
+									width="5.0625rem"
 									selectedKey="grid"
 									select="onSelect">
 								<items>
