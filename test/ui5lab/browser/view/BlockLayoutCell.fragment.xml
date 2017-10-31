@@ -15,6 +15,7 @@
 					level="H1"
 					titleStyle="H1"
 					text="{homeView>name}"
+					tooltip="{homeView>name}"
 					class="sapUiTinyMarginTop"/>
 			<Text
 					text="{homeView>description}"
