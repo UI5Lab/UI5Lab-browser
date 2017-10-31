@@ -36,7 +36,7 @@ sap.ui.define([
 				this.setModel(oViewModel, "homeView");
 
 				this.getRouter().getTarget("home").attachEventOnce("display", this._onHomeTargetMatched, this);
-				this.getOwnerComponent().samplesLoaded().then(this._fillLayout.bind(this));
+				this.getOwnerComponent().samplesLoaded().then(this._fillLayout.bind(this), this._fillLayout.bind(this));
 			},
 
 			/* =========================================================== */

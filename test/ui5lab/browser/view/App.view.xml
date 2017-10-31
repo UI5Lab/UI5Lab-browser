@@ -8,7 +8,7 @@
 		<f:FlexibleColumnLayout
 			id="app"
 			busy="{appView>/busy}"
-			layout="OneColumn"
+			layout="{appView>/layout}"
 			busyIndicatorDelay="{appView>/delay}">
 		</f:FlexibleColumnLayout>
 	</Shell>

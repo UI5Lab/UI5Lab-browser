@@ -101,13 +101,12 @@ sap.ui.define([
 			toggleFullScreen : function () {
 				var oViewModel = this.getModel("sampleListView");
 				var bFullscreen = oViewModel.getProperty("/fullscreen");
-				var oFlexibleLayout = this.getView().getParent().getParent();
 
 				oViewModel.setProperty("/fullscreen", !bFullscreen);
 				if (!bFullscreen) {
-					oFlexibleLayout.setLayout(sap.f.LayoutType.MidColumnFullScreen);
+					this.getModel("appView").setProperty("/layout", "MidColumnFullScreen");
 				} else {
-					oFlexibleLayout.setLayout(sap.f.LayoutType.TwoColumnsMidExpanded);
+					this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
 				}
 			},
 
@@ -115,10 +114,8 @@ sap.ui.define([
 			 * Closes the current page and returns to the parent route
 			 */
 			onClose : function (oEvent) {
-				var oFlexibleLayout = this.getView().getParent().getParent();
-
-				oFlexibleLayout.setLayout(sap.f.LayoutType.OneColumn);
-				this.getRouter().navTo("sampleList");
+				this.getRouter().navTo("home");
+				this.getModel("appView").setProperty("/layout", "OneColumn");
 			},
 
 			/**

@@ -71,7 +71,7 @@ sap.ui.define([
 
 						if (aLibraries.length > 0) {
 							for (var i = 0; i < aLibraries.length; i++) {
-								this._loadSamples(aLibraries[i], fnResolve, fnReject);
+								this._loadSamples(aLibraries[i], fnResolve);
 							}
 						} else {
 							// display hint
@@ -95,13 +95,20 @@ sap.ui.define([
 			jQuery.ajax(jQuery.sap.getModulePath("libs." + sLibraryName, "/index.json"), {
 				dataType: "json",
 				success: function (oData) {
+					// store metadata
 					this._oMetadata[sLibraryName] = oData[sLibraryName];
 					this._iLibraryLoadedCount++;
+				}.bind(this),
+				error: function () {
+					// just ignore the lib that cannot be loaded
+					this._iLibraryCount--;
+				}.bind(this),
+				complete: function () {
+					// resolve the outer promise when all libs are loaded
 					if (this._iLibraryCount === this._iLibraryLoadedCount) {
 						fnResolve();
 					}
-				}.bind(this),
-				error: fnReject
+				}.bind(this)
 			});
 		},
 

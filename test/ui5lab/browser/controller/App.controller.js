@@ -13,7 +13,8 @@ sap.ui.define([
 
 				oViewModel = new JSONModel({
 					busy : true,
-					delay : 0
+					delay : 0,
+					layout : "OneColumn"
 				});
 				this.setModel(oViewModel, "appView");
 
@@ -23,7 +24,7 @@ sap.ui.define([
 				};
 
 				this.getOwnerComponent().samplesLoaded().
-					then(fnSetAppNotBusy);
+					then(fnSetAppNotBusy, fnSetAppNotBusy);
 
 				// apply content density mode to root view
 				this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());

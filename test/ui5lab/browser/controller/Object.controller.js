@@ -88,9 +88,7 @@ sap.ui.define([
 			 * Closes the current page and returns to the parent route
 			 */
 			onClose : function (oEvent) {
-				var oFlexibleLayout = this.getView().getParent().getParent();
-
-				oFlexibleLayout.setLayout(sap.f.LayoutType.OneColumn);
+				this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
 				this.getRouter().navTo("sampleList", {
 					libraryId : this._sLibraryId
 				});
