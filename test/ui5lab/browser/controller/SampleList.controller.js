@@ -104,9 +104,12 @@ sap.ui.define([
 
 				oViewModel.setProperty("/fullscreen", !bFullscreen);
 				if (!bFullscreen) {
+					// store current layout and go fullscreen
+					this.getModel("appView").setProperty("/previousLayout", this.getModel("appView").getProperty("/layout"));
 					this.getModel("appView").setProperty("/layout", "MidColumnFullScreen");
 				} else {
-					this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
+					// reset to previous layout
+					this.getModel("appView").setProperty("/layout",  this.getModel("appView").getProperty("/previousLayout"));
 				}
 			},
 

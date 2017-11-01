@@ -23,9 +23,9 @@
 						<Toolbar height="3rem">
 							<Title text="{homeView>/title}"/>
 							<ToolbarSpacer />
-							<!-- width: bugfix for faulty toolbar rendering -->
+							<!-- width: bugfix for faulty initial toolbar rendering behaviour -->
 							<SegmentedButton
-									width="5.0625rem"
+									width="{= ${device>/support/touch} ? '5.0625rem' : '4.0625rem'}"
 									selectedKey="grid"
 									select="onSelect">
 								<items>

@@ -26,10 +26,14 @@ sap.ui.define([
 				oViewModel = new JSONModel({
 					title: this.getResourceBundle().getText("homePanelTitle"),
 					libraries: [
+						// example for library metadata dynamically composed from index.json file
 						{
-							"ui5lab.geometry": {
-								name: "Geometry"
-							}
+							id: "ui5lab.geometry",
+							name: "Geometry",
+							source: "http://",
+							documentation: "http://",
+							demo: "http://",
+							license: "Apache 2.0",
 						}
 					]
 				});

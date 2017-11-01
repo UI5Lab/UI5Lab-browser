@@ -14,7 +14,8 @@ sap.ui.define([
 				oViewModel = new JSONModel({
 					busy : true,
 					delay : 0,
-					layout : "OneColumn"
+					layout : "OneColumn",
+					previousLayout : "OneColumn"
 				});
 				this.setModel(oViewModel, "appView");
 

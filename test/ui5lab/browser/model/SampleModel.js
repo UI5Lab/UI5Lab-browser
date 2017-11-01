@@ -101,6 +101,7 @@ sap.ui.define([
 				}.bind(this),
 				error: function () {
 					// just ignore the lib that cannot be loaded
+					jQuery.sap.log.warning("Library metadata for '" + sLibraryName +"' could not be loaded, check if index.json file is configured properly");
 					this._iLibraryCount--;
 				}.bind(this),
 				complete: function () {

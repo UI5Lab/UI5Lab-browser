@@ -74,13 +74,15 @@ sap.ui.define([
 			toggleFullScreen : function () {
 				var oViewModel = this.getModel("objectView");
 				var bFullscreen = oViewModel.getProperty("/fullscreen");
-				var oFlexibleLayout = this.getView().getParent().getParent();
 
 				oViewModel.setProperty("/fullscreen", !bFullscreen);
 				if (!bFullscreen) {
-					oFlexibleLayout.setLayout(sap.f.LayoutType.EndColumnFullScreen);
+					// store current layout and go fullscreen
+					this.getModel("appView").setProperty("/previousLayout", this.getModel("appView").getProperty("/layout"));
+					this.getModel("appView").setProperty("/layout", "EndColumnFullScreen");
 				} else {
-					oFlexibleLayout.setLayout(sap.f.LayoutType.ThreeColumnsEndExpanded);
+					// reset to previous layout
+					this.getModel("appView").setProperty("/layout",  this.getModel("appView").getProperty("/previousLayout"));
 				}
 			},
 
