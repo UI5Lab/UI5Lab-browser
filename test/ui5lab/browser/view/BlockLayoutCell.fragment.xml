@@ -30,10 +30,10 @@
 				design="Bold"/>
 			<layout:VerticalLayout
 				class="sapUiTinyMarginBottom"
-				visible="{= ${homeView>source}.length > 0 || ${homeView>documentation}.length > 0 || ${homeView>demo}.length > 0 ? true : false }">
+				visible="{= ${homeView>source} !== undefined || ${homeView>documentation} !== undefined || ${homeView>demo} !== undefined ? true : false }">
 				<Link
 						href="{homeView>source}"
-						visible="{= ${homeView>source}.length === 0 ? false : true }"
+						visible="{= ${homeView>source} === undefined ? false : true }"
 						target="_blank"
 						text="Source Code"/>
 				<Link
@@ -42,7 +42,7 @@
 						text="Documentation"/>
 				<Link
 						href="{homeView>demo}"
-						visible="{= ${homeView>demo}.length === 0 ? false : true }"
+						visible="{= ${homeView>demo} === undefined ? false : true }"
 						target="_blank"
 						text="Demo"/>
 			</layout:VerticalLayout>
