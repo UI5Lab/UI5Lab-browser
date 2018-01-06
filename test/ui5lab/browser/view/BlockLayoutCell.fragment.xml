@@ -4,7 +4,7 @@
 		xmlns="sap.m">
 	<layout:BlockLayoutCell
 			class="sapUiContentPadding"
-			width="2">
+			width="4">
 		<layout:VerticalLayout width="100%">
 			<core:Icon
 					src="{homeView>icon}"
