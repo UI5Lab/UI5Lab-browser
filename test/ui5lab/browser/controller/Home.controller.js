@@ -83,7 +83,24 @@ sap.ui.define([
 					oSampleModel = this.getModel();
 
 				if (oSampleModel) {
-					oViewModel.setProperty("/libraries", oSampleModel.getData().libraries);
+					var aLibraries = oSampleModel.getData().libraries,
+							aLibraryRows = [[]],
+							iCurrentRow = 0,
+							iCellsPerRow = 4;
+
+					// flat list of libraries for table view
+					oViewModel.setProperty("/libraries", aLibraries);
+
+					// chunks of data for grid view
+					for (var i = 0; i < aLibraries.length; i++) {
+						aLibraryRows[iCurrentRow].push(aLibraries[i]);
+						if (i % iCellsPerRow === iCellsPerRow - 1) {
+							iCurrentRow++;
+							aLibraryRows[iCurrentRow] = [];
+						}
+					}
+					oViewModel.setProperty("/libraryRows", aLibraryRows);
+
 					oViewModel.setProperty("/title", this.getResourceBundle().getText("homePanelTitleCount", [oSampleModel.getData().libraries.length]));
 				}
 			}

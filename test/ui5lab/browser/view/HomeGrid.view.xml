@@ -6,11 +6,10 @@
 		xmlns:mvc="sap.ui.core.mvc">
 	<layout:BlockLayout
 			id="headerLayout"
+			content="{homeView>/libraryRows}"
 			background="Light">
 		<layout:BlockLayoutRow
-				content="{
-					path: 'homeView>/libraries'
-				}">
+				content="{homeView>}">
 			<core:Fragment fragmentName="ui5lab.browser.view.BlockLayoutCell" type="XML" />
 		</layout:BlockLayoutRow>
 	</layout:BlockLayout>
