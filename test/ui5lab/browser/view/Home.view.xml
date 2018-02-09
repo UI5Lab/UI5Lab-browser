@@ -20,9 +20,14 @@
 					class="sapUiResponsiveMargin"
 					width="auto">
 					<headerToolbar>
-						<Toolbar height="3rem">
+						<OverflowToolbar height="3rem">
 							<Title text="{homeView>/title}"/>
 							<ToolbarSpacer />
+							<SearchField
+									id="searchField"
+									liveChange="onSearch"
+									width="auto">
+							</SearchField>
 							<!-- width: bugfix for faulty initial toolbar rendering behaviour -->
 							<SegmentedButton
 									width="{= ${device>/support/touch} ? '5.0625rem' : '4.0625rem'}"
@@ -32,8 +37,11 @@
 									<SegmentedButtonItem icon="sap-icon://grid" key="Grid"/>
 									<SegmentedButtonItem icon="sap-icon://list" key="Table"/>
 								</items>
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
 							</SegmentedButton>
-						</Toolbar>
+						</OverflowToolbar>
 					</headerToolbar>
 					<content>
 						<!-- filled by routing, either grid or table based on user's choice  -->
