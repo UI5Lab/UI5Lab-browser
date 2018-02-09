@@ -6,15 +6,15 @@
 		xmlns:mvc="sap.ui.core.mvc">
 
 	<Table
-			id="table"
-			width="auto"
-			items="{
-				path: 'homeView>/libraries'
-			}"
-			noDataText="{sampleListView>/tableNoDataText}"
-			busyIndicatorDelay="{sampleListView>/tableBusyDelay}"
-			growing="true"
-			growingScrollToLoad="true">
+		id="table"
+		width="auto"
+		items="{
+			path: 'homeView>/libraries'
+		}"
+		noDataText="{i18n>homeNoDataText}"
+		busyIndicatorDelay="{sampleListView>/tableBusyDelay}"
+		growing="true"
+		growingScrollToLoad="true">
 
 		<columns>
 			<Column id="nameColumn">
@@ -70,6 +70,7 @@
 				</cells>
 			</ColumnListItem>
 		</items>
+
 	</Table>
 
 </mvc:View>
