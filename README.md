@@ -1,48 +1,64 @@
+![UI5Lab Ecosystem](https://github.com/Michadelic/UI5Lab-central/raw/master/docs/UI5LabLogoPhoenix.png)
+
+# What is it
+
+UI5Lab is a community driven repository for UI5 custom control libraries. Your contributions will drive our vision: A place where custom controls, templates, helper classes, and other code artifacts related to UI5 technology can be discovered and shared with the community. 
+
+# Get started
+
+#### Browse libraries and samples
+Have a look at the [UI5Lab browser](https://ui5lab.io/browser), where all current UI5Lab libraries and controls can be viewed
+
+#### Use a UI5Lab library in your app
+Follow the instructions in [this guide](https://github.com/UI5Lab/UI5Lab-central/blob/master/docs/ConsumeLibrary.md) or take a look at the [UI5Lab-app-simple](https://github.com/UI5Lab/UI5Lab-app-simple) project 
+
+#### Contribute to UI5Lab
+Have a look at our [contributing guide]((https://github.com/UI5Lab/UI5Lab-central/blob/master/CONTRIBUTING.md) to help us with our mission
+
 # UI5Lab-browser
-A browser to display custom libraries and controls for display on the UI5Lab homepage and testing during development
 
-## Concept
+This repository contains a browser to display custom libraries and control examples on the UI5Lab homepage. The app implemented in UI5 can also be used for testing control samples and previewing libraries during development.
 
-The browser is a draft for displaying libraries and its content based on metadata that is located inside the library projects (see TODO section for improvment ideas). As such, the logic is similar for both use cases:
-* Displaying a library during library development at design time
- * Developing Samples and Tests
- * High-Level library and control documentation
- * Testing the appearance of the library and its content on the UI5Lab homepage
-* Listing a library on the UI5Lab homepage so that it can be easily found by app developers at run time
-  * Search and find community controls or artifacts at the UI5Lab homepage
-  * Browse samples, high-level documentation, and test pages for all artifacts
-  * Link the project repository to contribute or report issues
+#### Setup
 
-## TODOs
-* Replace global libraries.json with a simple (nodejs) discovery service that finds all libraries and samples currently available and returns a json with all relevant information in json format
-* Alternative: read metadata from library.js, package.json, and bower.json or wait for UI5 tooling to do this for us
-
-## Getting started
+Run the following commands to test or develop this project:
 
 1. Install node.js (get it from [nodejs.org](http://nodejs.org/)).
- * If working behind a proxy, you need to configure it properly (HTTP_PROXY / HTTPS_PROXY / NO_PROXY environment variables)
+
+> **Note:** If working behind a proxy, you need to configure it properly (HTTP_PROXY / HTTPS_PROXY / NO_PROXY environment variables)
 
 2. Clone the repository and navigate into it
-```sh
-git clone https://github.com/openui5/UI5Lab-browser
+	```sh
+git clone https://github.com/UI5Lab/UI5Lab-browser
 cd UI5Lab-browser
-```
+	```
 3. Install all npm dependencies (also installs all bower dependencies)
-```sh
+	```sh
 npm install
-```
-
-4. Run npm start to lint, build and run a local server (have a look into `Gruntfile.js` to see all the tasks).
-```sh
+	```
+4. Run npm start to a local server (have a look into `Gruntfile.js` to see all the tasks).
+	```sh
 npm start
-```
+	```
 
-5. Open a test page in your browser: [http://localhost:8080/test-resources/ui5lab/browser/index.html](http://localhost:8080/test-resources/ui5lab/browser/index.html)
+5. Open the browser with the following URL: [http://localhost:8080/test-resources/ui5lab/browser/index.html](http://localhost:8080/test-resources/ui5lab/browser/index.html)
 
-### Directions
+> **Note:** To test the browser, one or more libraries should be defined as a dependency and registered in the libraries.json file. See the UI5Lab-central project for more details
 
-[Browser](http://localhost:8080/test-resources/ui5lab/browser/index.html) A sample browser showcasing artifacts from one or more libraries
+# Directions 
 
-### Contributing
+* [Project Overview](https://github.com/UI5Lab/UI5Lab-central/blob/master/docs/Overview.md) - introduction to UI5Lab and information on all related repositories
+* [Documentation](https://github.com/UI5Lab/UI5Lab-central/tree/master/docs) - detailed description on all UI5Lab topics and tutorials   
+* [Homepage](https://ui5lab.io) - the single point of entry for UI5Lab
+* [Browser](https://ui5lab.io/browser) - lists all libraries and examples in once central place
+* [Demo](https://ui5lab.github.io/UI5Lab-app-simple/index.html) - an example app consuming simple UI5Lab controls
 
-Instructions how to connect to the community and contribute to the UI5lab project can be found in the [main repository](https://github.com/openui5/UI5Lab/)!
+# Troubleshooting
+Issues can be created either in this repository or in any of the contributor repositories depending on where the error came from.
+Be sure to include enough details and context to reproduce the issue and follow up with you. 
+
+# Contact
+We organize this project in [Slack Channel #UI5Lab](https://openui5.slack.com/messages/UI5lab).
+If you are interested in what we do and discuss, join with this [invitation link](http://slackui5invite.herokuapp.com/).
+
+*The UI5Lab Community*
