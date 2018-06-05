@@ -20,6 +20,7 @@ sap.ui.define([
 				var oControl = oEvent.getSource(),
 					sNamespace = oControl.getBindingContext("homeView").getObject().id;
 
+				this.getModel("homeView").setProperty("/helpVisible", false);
 				this.getRouter().navTo("sampleList", {
 					libraryId: sNamespace
 				});

@@ -119,6 +119,7 @@ sap.ui.define([
 			onClose : function () {
 				this.getRouter().navTo("home");
 				this.getModel("appView").setProperty("/layout", "OneColumn");
+				this.getModel("homeView").setProperty("/helpVisible", false);
 			},
 
 			/**
