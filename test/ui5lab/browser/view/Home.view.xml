@@ -1,11 +1,10 @@
 <mvc:View
-		controllerName="ui5lab.browser.controller.Home"
-		xmlns="sap.m"
-		xmlns:core="sap.ui.core"
-		xmlns:mvc="sap.ui.core.mvc">
+	controllerName="ui5lab.browser.controller.Home"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
 
-	<Page
-			id="page">
+	<Page id="page">
 		<customHeader>
 			<Toolbar>
 				<ToolbarSpacer/>
@@ -16,46 +15,47 @@
 		</customHeader>
 		<content>
 			<Panel
-					id="projects"
-					class="sapUiResponsiveMargin"
-					width="auto">
-					<headerToolbar>
-						<OverflowToolbar height="3rem">
-							<Title text="{homeView>/title}"/>
-							<ToolbarSpacer />
-							<SearchField
-									id="searchField"
-									liveChange="onSearch"
-									width="auto">
-							</SearchField>
-							<!-- width: bugfix for faulty initial toolbar rendering behaviour -->
-							<SegmentedButton
-									width="{= ${device>/support/touch} ? '5.0625rem' : '4.0625rem'}"
-									selectedKey="grid"
-									select="onSelect">
-								<items>
-									<SegmentedButtonItem icon="sap-icon://grid" key="Grid"/>
-									<SegmentedButtonItem icon="sap-icon://list" key="Table"/>
-								</items>
-								<layoutData>
-									<OverflowToolbarLayoutData priority="NeverOverflow"/>
-								</layoutData>
-							</SegmentedButton>
-						</OverflowToolbar>
-					</headerToolbar>
-					<content>
-						<!-- filled by routing, either grid or table based on user's choice  -->
-					</content>
+				id="projects"
+				class="sapUiResponsiveMargin sapUiNoContentPadding"
+				width="auto">
+				<headerToolbar>
+					<OverflowToolbar height="3rem">
+						<Title text="{homeView>/title}"/>
+						<ToolbarSpacer />
+						<SearchField
+							id="searchField"
+							liveChange="onSearch"
+							width="auto">
+						</SearchField>
+						<!-- width: bugfix for faulty initial toolbar rendering behaviour -->
+						<SegmentedButton
+							width="{= ${device>/support/touch} ? '5.0625rem' : '4.0625rem'}"
+							selectedKey="grid"
+							select="onSelect">
+							<items>
+								<SegmentedButtonItem icon="sap-icon://grid" key="Grid"/>
+								<SegmentedButtonItem icon="sap-icon://list" key="Table"/>
+							</items>
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</SegmentedButton>
+					</OverflowToolbar>
+				</headerToolbar>
+				<content>
+					<!-- filled by routing, either grid or table based on user's choice  -->
+				</content>
 			</Panel>
 		</content>
 		<MessageStrip
-				class="sapUiResponsiveMargin"
-				text="UI5Lab is a community-driven custom repository. This sample browser is filled automatically with the individual packages of the UI5lab community projects. The samples and codebase of each community project is owned, governed and maintained by the individual repository owners. For more information check the corresponding project repository. Feel free to contribute and list your projects:"
-				type="Information"
-				showIcon="true"
-				customIcon="sap-icon://sap-ui5">
+			class="sapUiResponsiveMargin"
+			text="UI5Lab is a community-driven custom repository. This sample browser is filled automatically with the individual packages of the UI5lab community projects. The samples and codebase of each community project is owned, governed and maintained by the individual repository owners. For more information check the corresponding project repository. Feel free to contribute and list your projects:"
+			type="Information"
+			showIcon="true"
+			customIcon="sap-icon://sap-ui5">
 			<link>
-				<Link text="UI5Lab"
+				<Link
+					text="UI5Lab"
 					target="_blank"
 					href="https://github.com/UI5Lab/UI5Lab-central" />
 			</link>
