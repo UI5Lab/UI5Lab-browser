@@ -26,6 +26,7 @@ sap.ui.define([
 				oViewModel = new JSONModel({
 					title: this.getResourceBundle().getText("homePanelTitle"),
 					query: "",
+					helpVisible: true,
 					libraries: [
 						// example for library metadata dynamically composed from index.json file
 						{

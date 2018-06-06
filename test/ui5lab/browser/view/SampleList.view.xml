@@ -15,6 +15,7 @@
 				<ToolbarSpacer/>
 				<Title text="{sampleListView>/title}"/>
 				<ToolbarSpacer/>
+				<Button icon="sap-icon://sys-help" press="onHelp" tooltip="{i18n>helpButtonText}"/>
 				<Button icon="sap-icon://{= ${sampleListView>/fullscreen} === true ? 'exit-' : '' }full-screen" press="toggleFullScreen" tooltip="{= ${sampleListView>/fullScreen} === false ? 'Enter' : 'Exit' } Full Screen Mode"/>
 				<Button icon="sap-icon://decline" press="onClose" tooltip="Close column"/>
 			</Toolbar>
@@ -42,6 +43,7 @@
 					<Toolbar>
 						<Title id="tableHeader" text="{sampleListView>/sampleListTableTitle}"/>
 						<ToolbarSpacer />
+						<Button text="{i18n>howToUseLibraryButtonText}" press="onHowTo"/>
 						<SearchField
 							id="searchField"
 							tooltip="{i18n>sampleListSearchTooltip}"

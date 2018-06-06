@@ -116,10 +116,26 @@ sap.ui.define([
 			/**
 			 * Closes the current page and returns to the parent route
 			 */
-			onClose : function (oEvent) {
+			onClose : function () {
 				this.getRouter().navTo("home");
 				this.getModel("appView").setProperty("/layout", "OneColumn");
+				this.getModel("homeView").setProperty("/helpVisible", false);
 			},
+
+			/**
+			 * Redirects to the official documentation of UI5Lab project
+			 */
+			onHelp : function () {
+				sap.m.URLHelper.redirect("https://github.com/UI5Lab/UI5Lab-central", true);
+			},
+
+			/**
+			 * Redirects to the consume documentation of UI5Lab libraries
+			 */
+			onHowTo : function () {
+				sap.m.URLHelper.redirect("https://github.com/UI5Lab/UI5Lab-central/blob/master/docs/ConsumeLibrary.md", true);
+			},
+
 
 			/**
 			 * Groups the sample list by it's assets or shows it alphabetically if deselected
