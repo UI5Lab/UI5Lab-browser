@@ -11,7 +11,7 @@
 				<core:Icon src="sap-icon://lab"/>
 				<Title text="{i18n>homeViewTitle}"/>
 				<ToolbarSpacer/>
-				<Button icon="sap-icon://sys-help" press="onHelp" tooltip="{i18n>helpButtonText}" visible="{homeView>/helpVisible}"/>
+				<Button icon="sap-icon://sys-help" press="onHelp" tooltip="{i18n>helpButtonText}" visible="{appView>/helpVisible}"/>
 			</Toolbar>
 		</customHeader>
 		<content>
