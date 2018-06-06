@@ -28,22 +28,48 @@ Run the following commands to test or develop this project:
 > **Note:** If working behind a proxy, you need to configure it properly (HTTP_PROXY / HTTPS_PROXY / NO_PROXY environment variables)
 
 2. Clone the repository and navigate into it
-	```sh
+
+```sh
 git clone https://github.com/UI5Lab/UI5Lab-browser
 cd UI5Lab-browser
-	```
+```
+
 3. Install all npm dependencies (also installs all bower dependencies)
-	```sh
+
+```sh
 npm install
-	```
+```
+
 4. Run npm start to a local server (have a look into `Gruntfile.js` to see all the tasks).
-	```sh
+
+```sh
 npm start
-	```
+```
 
 5. Open the browser with the following URL: [http://localhost:8080/test-resources/ui5lab/browser/index.html](http://localhost:8080/test-resources/ui5lab/browser/index.html)
 
 > **Note:** To test the browser, one or more libraries should be defined as a dependency and registered in the libraries.json file. See the UI5Lab-central project for more details
+
+#### Publishing the to npm
+
+The library project and the central project reference the browser via npm module. In order to publish a new version to npm follow these steps:
+
+1. Maintain the package.json file and increase the version number
+
+
+2. Run grunt build to create a library preload and the CSS theme build for your library artifacts. Everything (minified and unminified sources) will be created in the ```dist``` folder, ready to be published and consumed by other projects
+
+```sh
+grunt build
+```
+
+3. Publish your package to npm, be sure to include only the metadata and the dist folder to keep the package size small (see .npmignore file for details) 
+
+```sh
+npm publish
+```
+
+> **Note:**  Official UI5Lab packages have to be published with the user ```ui5lab```, if you do not have permission ask a member the UI5Lab core team 
 
 # Directions 
 
