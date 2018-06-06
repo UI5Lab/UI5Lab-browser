@@ -15,7 +15,8 @@ sap.ui.define([
 					busy : true,
 					delay : 0,
 					layout : "OneColumn",
-					previousLayout : "OneColumn"
+					previousLayout : "OneColumn",
+					helpVisible: true
 				});
 				this.setModel(oViewModel, "appView");
 

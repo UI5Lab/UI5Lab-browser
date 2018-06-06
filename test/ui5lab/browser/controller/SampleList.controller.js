@@ -117,9 +117,9 @@ sap.ui.define([
 			 * Closes the current page and returns to the parent route
 			 */
 			onClose : function () {
+				this.getModel("appView").setProperty("/helpVisible", true);
 				this.getRouter().navTo("home");
 				this.getModel("appView").setProperty("/layout", "OneColumn");
-				this.getModel("homeView").setProperty("/helpVisible", false);
 			},
 
 			/**
