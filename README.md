@@ -74,7 +74,7 @@ npm publish
 # Directions 
 
 * [Project Overview](https://ui5lab.github.io/UI5Lab-docs/#/general/overview) - introduction to UI5Lab and information on all related repositories
-* [Documentation](https://github.com/UI5Lab/UI5Lab-central/tree/master/docs) - detailed description on all UI5Lab topics and tutorials   
+* [Documentation](https://ui5lab.github.io/UI5Lab-docs/#/) - detailed description on all UI5Lab topics and tutorials   
 * [Homepage](https://ui5lab.io) - the single point of entry for UI5Lab
 * [Browser](https://ui5lab.io/browser) - lists all libraries and examples in once central place
 * [Demo](https://ui5lab.github.io/UI5Lab-app-simple/index.html) - an example app consuming simple UI5Lab controls
