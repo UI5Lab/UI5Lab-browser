@@ -10,10 +10,10 @@ UI5Lab is a community driven repository for UI5 custom control libraries. Your c
 Have a look at the [UI5Lab browser](https://ui5lab.io/browser), where all current UI5Lab libraries and controls can be viewed
 
 #### Use a UI5Lab library in your app
-Follow the instructions in [this guide](https://github.com/UI5Lab/UI5Lab-central/blob/master/docs/ConsumeLibrary.md) or take a look at the [UI5Lab-app-simple](https://github.com/UI5Lab/UI5Lab-app-simple) project 
+Follow the instructions in [this guide](https://ui5lab.github.io/UI5Lab-docs/#/how_to/consume_library) or take a look at the [UI5Lab-app-simple](https://github.com/UI5Lab/UI5Lab-app-simple) project 
 
 #### Contribute to UI5Lab
-Have a look at our [contributing guide]((https://github.com/UI5Lab/UI5Lab-central/blob/master/CONTRIBUTING.md) to help us with our mission
+Have a look at our [contributing guide](https://ui5lab.github.io/UI5Lab-docs/#/how_to/contribute_custom_control_library) to help us with our mission
 
 # UI5Lab-browser
 
@@ -73,7 +73,7 @@ npm publish
 
 # Directions 
 
-* [Project Overview](https://github.com/UI5Lab/UI5Lab-central/blob/master/docs/Overview.md) - introduction to UI5Lab and information on all related repositories
+* [Project Overview](https://ui5lab.github.io/UI5Lab-docs/#/general/overview) - introduction to UI5Lab and information on all related repositories
 * [Documentation](https://github.com/UI5Lab/UI5Lab-central/tree/master/docs) - detailed description on all UI5Lab topics and tutorials   
 * [Homepage](https://ui5lab.io) - the single point of entry for UI5Lab
 * [Browser](https://ui5lab.io/browser) - lists all libraries and examples in once central place
