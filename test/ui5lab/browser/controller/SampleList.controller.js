@@ -3,8 +3,9 @@ sap.ui.define([
 		"sap/ui/model/json/JSONModel",
 		"ui5lab/browser/model/formatter",
 		"sap/ui/model/Filter",
-		"sap/ui/model/FilterOperator"
-	], function (BaseController, JSONModel, formatter, Filter, FilterOperator) {
+		"sap/ui/model/FilterOperator",
+		"sap/m/URLHelper"
+	], function (BaseController, JSONModel, formatter, Filter, FilterOperator, URLHelper) {
 		"use strict";
 
 		return BaseController.extend("ui5lab.browser.controller.SampleList", {
@@ -126,14 +127,14 @@ sap.ui.define([
 			 * Redirects to the official documentation of UI5Lab project
 			 */
 			onHelp : function () {
-				sap.m.URLHelper.redirect("https://ui5lab.io/docs/", true);
+				URLHelper.redirect("https://ui5lab.io/docs/", true);
 			},
 
 			/**
 			 * Redirects to the consume documentation of UI5Lab libraries
 			 */
 			onHowTo : function () {
-				sap.m.URLHelper.redirect("https://ui5lab.io/docs/#/how_to/consume_library", true);
+				URLHelper.redirect("https://ui5lab.io/docs/#/how_to/consume_library", true);
 			},
 
 			/**
