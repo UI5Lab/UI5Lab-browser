@@ -1,6 +1,6 @@
 {
   "name": "ui5lab-browser",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "A browser to display custom libraries and controls for display on the UI5Lab homepage and testing during development",
   "private": false,
   "repository": {
