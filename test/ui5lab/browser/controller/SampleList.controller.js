@@ -126,16 +126,15 @@ sap.ui.define([
 			 * Redirects to the official documentation of UI5Lab project
 			 */
 			onHelp : function () {
-				sap.m.URLHelper.redirect("https://github.com/UI5Lab/UI5Lab-central", true);
+				sap.m.URLHelper.redirect("https://ui5lab.io/docs/", true);
 			},
 
 			/**
 			 * Redirects to the consume documentation of UI5Lab libraries
 			 */
 			onHowTo : function () {
-				sap.m.URLHelper.redirect("https://github.com/UI5Lab/UI5Lab-central/blob/master/docs/ConsumeLibrary.md", true);
+				sap.m.URLHelper.redirect("https://ui5lab.io/docs/#/how_to/consume_library", true);
 			},
-
 
 			/**
 			 * Groups the sample list by it's assets or shows it alphabetically if deselected
