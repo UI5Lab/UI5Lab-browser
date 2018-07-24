@@ -21,7 +21,7 @@ git clone https://github.com/UI5Lab/UI5Lab-browser
 cd UI5Lab-browser
 ```
 
-3. Install all npm dependencies (also installs all bower dependencies)
+3. Install all npm dependencies 
 
 ```sh
 npm install

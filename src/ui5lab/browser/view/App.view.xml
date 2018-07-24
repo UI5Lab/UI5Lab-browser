@@ -1,0 +1,19 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	controllerName="ui5lab.browser.controller.App"
+	xmlns:f="sap.f"
+	displayBlock="true"
+	xmlns="sap.m">
+
+	<App>
+		<Shell appWidthLimited="false">
+			<f:FlexibleColumnLayout
+				id="app"
+				busy="{appView>/busy}"
+				layout="{appView>/layout}"
+				busyIndicatorDelay="{appView>/delay}">
+			</f:FlexibleColumnLayout>
+		</Shell>
+	</App>
+
+</mvc:View>
