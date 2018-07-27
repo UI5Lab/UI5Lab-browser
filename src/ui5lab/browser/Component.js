@@ -27,13 +27,17 @@ sap.ui.define([
 			this.setModel(models.createDeviceModel(), "device");
 
 			// set up a model that loads samples based on metadata
-			var oSampleModel = new SampleModel(this._oIconsLoadedPromise);
+			var oSampleModel = new SampleModel();
 			this.setModel(oSampleModel);
 
 			// We resolve the helper promise on component level when the promise in the icon model is resolved.
 			// The app controller is instantiated before the components init method, so it cannot directly
 			// register to the icon model.
-			oSampleModel.loaded().then(this._fnSamplesLoadedResolve, this._fnSamplesLoadedReject);
+			oSampleModel.loaded().then(function () {
+				this._fnSamplesLoadedResolve();
+			}.bind(this), function () {
+				this._fnSamplesLoadedReject();
+			}.bind(this));
 
 			// initialize the error handler with the component
 			this._oErrorHandler = new ErrorHandler(this);

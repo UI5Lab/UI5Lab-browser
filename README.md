@@ -27,11 +27,13 @@ cd UI5Lab-browser
 npm install
 ```
 
-4. Run npm start to a local server (have a look into `Gruntfile.js` to see all the tasks).
+4. Run a local Web server with the ui5 tools:
 
 ```sh
-npm start
+ui5 serve
 ```
+
+> **Note:** Run ```npm install --global @ui5/cli``` if the ```ui5``` command is not registered (for more information see [ui5 tooling](https://github.com/SAP/ui5-tooling]))
 
 5. Open the browser with the following URL: [http://localhost:8080/test-resources/ui5lab/browser/index.html](http://localhost:8080/test-resources/ui5lab/browser/index.html)
 
@@ -44,10 +46,10 @@ The library project and the central project reference the browser via npm module
 1. Maintain the package.json file and increase the version number
 
 
-2. Run grunt build to create a library preload and the CSS theme build for your library artifacts. Everything (minified and unminified sources) will be created in the ```dist``` folder, ready to be published and consumed by other projects
+2. Run the ui5 build tools to create a library preload and the CSS theme build for your library artifacts. Everything (minified and unminified sources) will be created in the ```dist``` folder, ready to be published and consumed by other projects
 
 ```sh
-grunt build
+ui5 build
 ```
 
 3. Publish your package to npm, be sure to include only the metadata and the dist folder to keep the package size small (see .npmignore file for details) 
