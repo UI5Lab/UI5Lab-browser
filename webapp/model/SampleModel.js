@@ -61,7 +61,7 @@ sap.ui.define([
 				// * nobody wants to configure redundant metadata
 
 				// load library metadata file asynchronously
-				jQuery.ajax(jQuery.sap.getModulePath("libs", "/libraries.json"), {
+				jQuery.ajax(jQuery.sap.getModulePath("ui5lab.browser", "/libraries.json"), {
 					dataType: "json",
 					success: function (oData) {
 						var aLibraries = oData.libraries;

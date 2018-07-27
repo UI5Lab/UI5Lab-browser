@@ -35,9 +35,9 @@ ui5 serve
 
 > **Note:** Run ```npm install --global @ui5/cli``` if the ```ui5``` command is not registered (for more information see [ui5 tooling](https://github.com/SAP/ui5-tooling]))
 
-5. Open the browser with the following URL: [http://localhost:8080/test-resources/ui5lab/browser/index.html](http://localhost:8080/test-resources/ui5lab/browser/index.html)
+5. Open the browser with the following URL: [http://localhost:8080/index.html](http://localhost:8080/index.html)
 
-> **Note:** To test the browser, one or more libraries should be defined as a dependency and registered in the libraries.json file. See the UI5Lab-central project for more details
+> **Note:** To test the browser, one or more libraries should be defined as a dependency and registered in the libraries.json file. See the ```gh-pages``` branch of UI5Lab-central project for a live example
 
 #### Publishing the to npm
 
