@@ -10,27 +10,27 @@ This repository contains a browser to display custom libraries and control examp
 
 Run the following commands to test or develop this project:
 
-1. Install node.js (get it from [nodejs.org](http://nodejs.org/)).
+1. Install node.js (get it from [nodejs.org](http://nodejs.org/))
 
 > **Note:** If working behind a proxy, you need to configure it properly (HTTP_PROXY / HTTPS_PROXY / NO_PROXY environment variables)
 
-2. Clone the repository and navigate into it
+2. Clone the repository and navigate into it:
 
 ```sh
 git clone https://github.com/UI5Lab/UI5Lab-browser
 cd UI5Lab-browser
 ```
 
-3. Install all npm dependencies 
+3. Install all npm dependencies :
 
 ```sh
 npm install
 ```
 
-4. Run a local Web server with the ui5 tools:
+4. Run a local Web server with the ui5 tools for testing:
 
 ```sh
-ui5 serve
+npm start
 ```
 
 > **Note:** Run ```npm install --global @ui5/cli``` if the ```ui5``` command is not registered (for more information see [ui5 tooling](https://github.com/SAP/ui5-tooling]))
