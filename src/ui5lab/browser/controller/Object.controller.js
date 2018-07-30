@@ -174,7 +174,11 @@ sap.ui.define([
 				if (oContext.url) {
 					oViewModel.setProperty("/href", oContext.url);
 				} else {
-					oViewModel.setProperty("/href", jQuery.sap.getModulePath("libs." + oContext.library + ".sample." + oContext.id.split("\.").pop(), ".html"));
+					//It should always load from /test-resources
+					var url = '/test-resources' +
+						jQuery.sap.getModulePath("libs." + oContext.library + ".sample." + oContext.id.split("\.").pop(), ".html")
+							.substring(1);
+					oViewModel.setProperty("/href", url);
 				}
 				oViewModel.setProperty("/busy", false);
 			}
