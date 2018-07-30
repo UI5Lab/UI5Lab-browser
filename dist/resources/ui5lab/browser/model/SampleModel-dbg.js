@@ -92,7 +92,10 @@ sap.ui.define([
 		 * @private
 		 */
 		_loadSamples: function (sLibraryName, fnResolve, fnReject) {
-			jQuery.ajax(jQuery.sap.getModulePath("libs." + sLibraryName, "/index.json"), {
+			//It should always load from /test-resources
+			var url = '/test-resources' + jQuery.sap.getModulePath("libs." + sLibraryName, "/index.json").substring(1);
+			jQuery.ajax({
+				url: url,
 				dataType: "json",
 				success: function (oData) {
 					// store metadata
