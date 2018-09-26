@@ -1,12 +1,14 @@
 # exclude development artifacts
 test
 node_modules
-bower_components
 .editorconfig
-.eslintrcn
+.eslintrc
+.idea
+webapp
 
 # only for testing, these resources should not be delivered but are easy to forget
 webapp/resources
 webapp/test-resources
 dist/webapp/resources
 dist/webapp/test-resources
+

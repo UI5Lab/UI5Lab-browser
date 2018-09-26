@@ -1,5 +1,5 @@
 node_modules/
-bower_components/
+dist/
 .idea/
 
 # only for testing, these resources should not be delivered but are easy to forget

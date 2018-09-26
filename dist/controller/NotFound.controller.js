@@ -1,1 +1,0 @@
-sap.ui.define(["ui5lab/browser/controller/BaseController"],function(e){"use strict";return e.extend("ui5lab.browser.controller.NotFound",{onLinkPressed:function(){this.getRouter().navTo("sampleList")}})});
