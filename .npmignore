@@ -3,6 +3,7 @@ test
 node_modules
 .editorconfig
 .eslintrc
+.eslintignore
 .idea
 webapp
 
