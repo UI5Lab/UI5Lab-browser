@@ -49,7 +49,7 @@ The library project and the central project reference the browser via npm module
 2. Run the ui5 build tools to create a library preload and the CSS theme build for your library artifacts. Everything (minified and unminified sources) will be created in the ```dist``` folder, ready to be published and consumed by other projects
 
 ```sh
-ui5 build
+npm run build
 ```
 
 3. Publish your package to npm, be sure to include only the metadata and the dist folder to keep the package size small (see .npmignore file for details) 
