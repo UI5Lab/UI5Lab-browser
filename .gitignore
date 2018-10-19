@@ -7,3 +7,5 @@ webapp/resources
 webapp/test-resources
 dist/webapp/resources
 dist/webapp/test-resources
+dist/resources
+dist/test-resources
