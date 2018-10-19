@@ -33,7 +33,9 @@ sap.ui.define([
 			// We resolve the helper promise on component level when the promise in the icon model is resolved.
 			// The app controller is instantiated before the components init method, so it cannot directly
 			// register to the icon model.
-			//oSampleModel.loaded().then(this._fnSamplesLoadedResolve, this._fnSamplesLoadedReject);
+
+			this.samplesLoaded();
+
 			oSampleModel.loaded().then(function () {
 				this._fnSamplesLoadedResolve();
 			}.bind(this), function () {
@@ -49,8 +51,8 @@ sap.ui.define([
 		},
 
 		/**
-		 * Wrapper for the iconModel promise as the controller is instantiated earlier than the model
-		 * @return {Promise|*} the icons loaded promise
+		 * Wrapper for the sampleModel promise as the controller is instantiated earlier than the model
+		 * @return {Promise|*} the samples loaded promise
 		 */
 		samplesLoaded: function () {
 			if (!this._oSamplesLoadedPromise) {
