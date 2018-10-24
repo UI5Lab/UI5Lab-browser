@@ -92,8 +92,8 @@ sap.ui.define([
 		 * @private
 		 */
 		_loadSamples: function (sLibraryName, fnResolve, fnReject) {
-			//It should always load from /test-resources
-			var url = '/test-resources' + jQuery.sap.getModulePath("libs." + sLibraryName, "/index.json").substring(1);
+			//It should always load from test-resources
+			var url = jQuery.sap.getModulePath("libs." + sLibraryName, "/index.json");
 			jQuery.ajax({
 				url: url,
 				dataType: "json",
