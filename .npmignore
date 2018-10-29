@@ -1,6 +1,11 @@
 # exclude development artifacts
-test
-node_modules
-bower_components
+node_modules/
 .editorconfig
-.eslintrcn
+.eslintrc
+.eslintignore
+.idea
+
+# only for testing, these resources should not be delivered but are easy to forget
+dist/resources/
+dist/test-resources/
+

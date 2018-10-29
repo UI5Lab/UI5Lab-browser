@@ -1,4 +1,4 @@
-![UI5Lab Logo](https://github.com/UI5Lab/UI5Lab-central/blob/master/docs/media/UI5LabLogoPhoenix.png)
+![UI5Lab Logo](https://raw.githubusercontent.com/UI5Lab/UI5Lab-central/master/docs/media/UI5LabLogoPhoenix.png)
 
 # What is it
 UI5Lab is a community driven repository for UI5 Custom Control Libraries. It's purpose is to make it easy for everyone to share, retrieve and use UI5 Custom Controls. Contributions welcome!
@@ -10,32 +10,34 @@ This repository contains a browser to display custom libraries and control examp
 
 Run the following commands to test or develop this project:
 
-1. Install node.js (get it from [nodejs.org](http://nodejs.org/)).
+1. Install node.js (get it from [nodejs.org](http://nodejs.org/))
 
 > **Note:** If working behind a proxy, you need to configure it properly (HTTP_PROXY / HTTPS_PROXY / NO_PROXY environment variables)
 
-2. Clone the repository and navigate into it
+2. Clone the repository and navigate into it:
 
 ```sh
 git clone https://github.com/UI5Lab/UI5Lab-browser
 cd UI5Lab-browser
 ```
 
-3. Install all npm dependencies (also installs all bower dependencies)
+3. Install all npm dependencies :
 
 ```sh
 npm install
 ```
 
-4. Run npm start to a local server (have a look into `Gruntfile.js` to see all the tasks).
+4. Run a local Web server with the ui5 tools for testing:
 
 ```sh
 npm start
 ```
 
-5. Open the browser with the following URL: [http://localhost:8080/test-resources/ui5lab/browser/index.html](http://localhost:8080/test-resources/ui5lab/browser/index.html)
+> **Note:** Run ```npm install --global @ui5/cli``` if the ```ui5``` command is not registered (for more information see [ui5 tooling](https://github.com/SAP/ui5-tooling]))
 
-> **Note:** To test the browser, one or more libraries should be defined as a dependency and registered in the libraries.json file. See the UI5Lab-central project for more details
+5. Open the browser with the following URL: [http://localhost:8080/index.html](http://localhost:8080/index.html)
+
+> **Note:** To test the browser, one or more libraries should be defined as a dependency and registered in the libraries.json file. See the ```gh-pages``` branch of UI5Lab-central project for a live example
 
 #### Publishing the to npm
 
@@ -44,10 +46,10 @@ The library project and the central project reference the browser via npm module
 1. Maintain the package.json file and increase the version number
 
 
-2. Run grunt build to create a library preload and the CSS theme build for your library artifacts. Everything (minified and unminified sources) will be created in the ```dist``` folder, ready to be published and consumed by other projects
+2. Run the ui5 build tools to create a library preload and the CSS theme build for your library artifacts. Everything (minified and unminified sources) will be created in the ```dist``` folder, ready to be published and consumed by other projects
 
 ```sh
-grunt build
+npm run build
 ```
 
 3. Publish your package to npm, be sure to include only the metadata and the dist folder to keep the package size small (see .npmignore file for details) 
