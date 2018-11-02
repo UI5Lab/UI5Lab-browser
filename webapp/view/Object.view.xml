@@ -23,6 +23,7 @@
 				}"/>
 				<ToolbarSpacer/>
 				<Button icon="sap-icon://{= ${objectView>/fullscreen} === true ? 'exit-' : '' }full-screen" press="toggleFullScreen" tooltip="{= ${objectView>/fullScreen} === false ? 'Enter' : 'Exit' } Full Screen Mode"/>
+				<Button icon="sap-icon://inspect" press="openInNewTab" tooltip="Open in new Tab"/>
 				<Button icon="sap-icon://decline" press="onClose" tooltip="Close column"/>
 			</Toolbar>
 		</customHeader>

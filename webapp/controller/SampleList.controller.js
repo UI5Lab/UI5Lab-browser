@@ -238,9 +238,11 @@ sap.ui.define([
 
 					this._oTable.getBinding("items").filter(oFilter);
 				}.bind(this));
+
+				// update title and share message
 				oViewModel.setProperty("/title", this.getResourceBundle().getText("sampleListViewTitle", sLibraryId));
-				this.getModel("sampleListView").setProperty("shareSendEmailSubject", this.getResourceBundle().getText("shareSendEmailSampleListSubject", sLibraryId));
-				this.getModel("sampleListView").setProperty("shareSendEmailMessage", this.getResourceBundle().getText("shareSendEmailSampleListMessage", location.href));
+				oViewModel.setProperty("/shareSendEmailSubject", this.getResourceBundle().getText("shareSendEmailSampleListSubject", sLibraryId));
+				oViewModel.setProperty("/shareSendEmailMessage", this.getResourceBundle().getText("shareSendEmailSampleListMessage", location.href));
 
 				oFlexibleLayout.setLayout(sap.f.LayoutType.TwoColumnsMidExpanded);
 			},
@@ -252,7 +254,8 @@ sap.ui.define([
 			 * @private
 			 */
 			_onObjectMatched: function (oEvent) {
-				var sLibraryId =  oEvent.getParameter("arguments").libraryId;
+				var sLibraryId =  oEvent.getParameter("arguments").libraryId,
+					oViewModel = this.getModel("sampleListView");
 
 				this.getModel().loaded().then( function() {
 					// TODO: put this as system filter
@@ -260,6 +263,11 @@ sap.ui.define([
 
 					this._oTable.getBinding("items").filter(oFilter);
 				}.bind(this));
+
+				// update title and share message
+				oViewModel.setProperty("/title", this.getResourceBundle().getText("sampleListViewTitle", sLibraryId));
+				oViewModel.setProperty("/shareSendEmailSubject", this.getResourceBundle().getText("shareSendEmailSampleListSubject", sLibraryId));
+				oViewModel.setProperty("/shareSendEmailMessage", this.getResourceBundle().getText("shareSendEmailSampleListMessage", location.href));
 			},
 
 			/**
