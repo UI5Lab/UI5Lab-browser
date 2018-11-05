@@ -1,12 +1,9 @@
-/*!
- * ${copyright}
- */
-
 sap.ui.define([
-	"jquery.sap.global",
+	"sap/ui/thirdparty/jquery",
+	"sap/base/Log",
 	"sap/ui/model/json/JSONModel",
 	"sap/m/MessageBox"
-], function (jQuery, JSONModel, MessageBox) {
+], function (jQuery, Log, JSONModel, MessageBox) {
 	"use strict";
 
 	return JSONModel.extend("ui5lab.browser.model.SampleModel", {
@@ -15,9 +12,10 @@ sap.ui.define([
 		 * Loads samples available in the current project based on metadata
 		 * @class
 		 * @public
-		 * @alias sap.ui.demo.iconexplorer.model.IconModel
+		 * @alias ui5lab.browser.model.SampleModel
 		 */
-		constructor : function () {
+		constructor : function (oResourceModel) {
+			this._oResourceBundle = oResourceModel.getResourceBundle();
 
 			// call base class constructor
 			JSONModel.apply(this, arguments);
@@ -61,7 +59,7 @@ sap.ui.define([
 				// * nobody wants to configure redundant metadata
 
 				// load library metadata file asynchronously
-				jQuery.ajax(jQuery.sap.getModulePath("ui5lab.browser", "/libraries.json"), {
+				jQuery.ajax(sap.ui.require.toUrl("ui5lab/browser/libraries.json"), {
 					dataType: "json",
 					success: function (oData) {
 						var aLibraries = oData.libraries;
@@ -75,7 +73,7 @@ sap.ui.define([
 							}
 						} else {
 							// display hint
-							MessageBox.information("No libraries configured, please add a libraries.json file");
+							MessageBox.information(this._oResourceBundle.getText("noLibrariesConfigured"));
 							fnResolve();
 						}
 					}.bind(this),
@@ -93,7 +91,7 @@ sap.ui.define([
 		 */
 		_loadSamples: function (sLibraryName, fnResolve, fnReject) {
 			//It should always load from test-resources
-			var url = jQuery.sap.getModulePath("libs." + sLibraryName, "/index.json");
+			var url = sap.ui.require.toUrl("libs/" + sLibraryName.replace(/\./g, '/') + "/index.json");
 			jQuery.ajax({
 				url: url,
 				dataType: "json",
@@ -104,7 +102,7 @@ sap.ui.define([
 				}.bind(this),
 				error: function () {
 					// just ignore the lib that cannot be loaded
-					jQuery.sap.log.warning("Library metadata for '" + sLibraryName +"' could not be loaded, check if index.json file is configured properly");
+					Log.warning(this._oResourceBundle.getText("noMetadataForLibrary", sLibraryName));
 					this._iLibraryCount--;
 				}.bind(this),
 				complete: function () {
@@ -117,12 +115,12 @@ sap.ui.define([
 		},
 
 		/**
-		 *	Post process all data for display in the icon explorer
+		 *	Post process all data for display in the UI5Lab browser
 		 * @private
 		 */
-		_onMetadataLoaded : function()  {
+		_onMetadataLoaded : function () {
 			// trace elapsed time
-			jQuery.sap.log.info("SampleModel: Loaded all samples in " + (new Date().getTime() - this._iStartTime) + " ms");
+			Log.info("SampleModel: Loaded all samples in " + (new Date().getTime() - this._iStartTime) + " ms");
 
 			var oSampleData = this._processMetadata(this._oMetadata);
 
@@ -130,13 +128,13 @@ sap.ui.define([
 			this.setProperty("/", oSampleData);
 			this.updateBindings(true);
 
-			// resolve iconsLoaded promise
+			// resolve samplesLoaded promise
 			this._fnSamplesLoadedResolve();
 		},
 
 		/**
 		 * Sorts and formats the sample metadata to be used in bindings
-		 * @param oMetadata Raw metadata coming from the json descriptor
+		 * @param {object} oMetadata Raw metadata coming from the json descriptor
 		 * @return {object} Formatted metadata
 		 * @private
 		 */
@@ -145,7 +143,7 @@ sap.ui.define([
 				libraries: [],
 				assets: [],
 				samples: []
-			};
+			},
 			aLibraryNames = oMetadata;
 
 			var aLibraryNames = Object.keys(aLibraryNames);
@@ -179,7 +177,7 @@ sap.ui.define([
 		},
 
 		/**
-		 * Fires a request failed event in case the metadata for the icons could not be read
+		 * Fires a request failed event in case the metadata for the library could not be read
 		 * @param {object} oResponse the response object from the ajax request
 		 * @private
 		 */

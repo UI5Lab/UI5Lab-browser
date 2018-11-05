@@ -1,18 +1,17 @@
 /*global location*/
 
 sap.ui.define([
-	"ui5lab/browser/controller/BaseController",
+	"./BaseController",
+	"ui5lab/browser/model/formatter",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/routing/History",
-	"ui5lab/browser/model/formatter",
 	"sap/m/library",
 ], function (
 	BaseController,
+	formatter,
 	JSONModel,
 	History,
-	formatter,
-	mobileLibrary
-) {
+	mobileLibrary) {
 	"use strict";
 
 	// shortcut for sap.m.URLHelper
@@ -189,7 +188,7 @@ sap.ui.define([
 				oViewModel.setProperty("/href", oContext.url);
 			} else {
 				//It should always load from test-resources
-				var url = jQuery.sap.getModulePath("libs." + oContext.library + ".sample." + oContext.id.split("\.").pop(), ".html");
+				var url = sap.ui.require.toUrl("libs/" + oContext.library.replace(/\./g, '/') + "/sample/" + oContext.id.split("\.").pop() + ".html");
 				oViewModel.setProperty("/href", url);
 			}
 			oViewModel.setProperty("/busy", false);
