@@ -11,7 +11,7 @@
 				<core:Icon src="sap-icon://lab"/>
 				<Title text="{i18n>homeViewTitle}"/>
 				<ToolbarSpacer/>
-				<Button icon="sap-icon://sys-help" press="onHelp" tooltip="{i18n>helpButtonText}" visible="{appView>/helpVisible}"/>
+				<Button icon="sap-icon://sys-help" press=".onHelp" tooltip="{i18n>helpButtonText}" visible="{appView>/helpVisible}"/>
 			</Toolbar>
 		</customHeader>
 		<content>
@@ -25,14 +25,14 @@
 						<ToolbarSpacer />
 						<SearchField
 							id="searchField"
-							liveChange="onSearch"
+							liveChange=".onSearch"
 							width="auto">
 						</SearchField>
 						<!-- width: bugfix for faulty initial toolbar rendering behaviour -->
 						<SegmentedButton
 							width="{= ${device>/support/touch} ? '5.0625rem' : '4.0625rem'}"
 							selectedKey="grid"
-							select="onSelect">
+							select=".onSelect">
 							<items>
 								<SegmentedButtonItem icon="sap-icon://grid" key="Grid"/>
 								<SegmentedButtonItem icon="sap-icon://list" key="Table"/>
@@ -50,7 +50,7 @@
 		</content>
 		<MessageStrip
 			class="sapUiResponsiveMargin"
-			text="UI5Lab is a community-driven custom repository. This sample browser is filled automatically with the individual packages of the UI5lab community projects. The samples and codebase of each community project is owned, governed and maintained by the individual repository owners. For more information check the corresponding project repository. Feel free to contribute and list your projects:"
+			text="{i18n>UI5LabProjectDescription}"
 			type="Information"
 			showIcon="true"
 			customIcon="sap-icon://sap-ui5">

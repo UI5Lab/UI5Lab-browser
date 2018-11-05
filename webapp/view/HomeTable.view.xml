@@ -1,9 +1,9 @@
 <mvc:View
-		controllerName="ui5lab.browser.controller.HomeTable"
-		xmlns="sap.m"
-		xmlns:core="sap.ui.core"
-		xmlns:layout="sap.ui.layout"
-		xmlns:mvc="sap.ui.core.mvc">
+	controllerName="ui5lab.browser.controller.HomeTable"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc">
 
 	<Table
 		id="table"
@@ -33,15 +33,15 @@
 
 		<items>
 			<ColumnListItem
-					type="Navigation"
-					press="onShowLibrary">
+				type="Navigation"
+				press=".onShowLibrary">
 				<cells>
 					<layout:HorizontalLayout>
 						<core:Icon
-								class="sapUiTinyMarginEnd"
-								src="{homeView>icon}"
-								size="2rem"
-								color="Default">
+							class="sapUiTinyMarginEnd"
+							src="{homeView>icon}"
+							size="2rem"
+							color="Default">
 						</core:Icon>
 						<layout:VerticalLayout>
 							<Label design="Bold" text="{homeView>name}"/>
@@ -51,21 +51,21 @@
 					<Text text="{homeView>description}"/>
 					<Text text="{homeView>license}"/>
 					<layout:VerticalLayout
-							visible="{= ${homeView>source} !== undefined || ${homeView>documentation} !== undefined || ${homeView>demo} !== undefined ? true : false }">
+						visible="{= ${homeView>source} !== undefined || ${homeView>documentation} !== undefined || ${homeView>demo} !== undefined ? true : false }">
 						<Link
-								href="{homeView>source}"
-								visible="{= ${homeView>source} === undefined ? false : true }"
-								target="_blank"
-								text="Source Code"/>
+							href="{homeView>source}"
+							visible="{= ${homeView>source} === undefined ? false : true }"
+							target="_blank"
+							text="{i18n>homeSourceCode}"/>
 						<Link
-								href="{homeView>documentation}"
-								target="_blank"
-								text="Documentation"/>
+							href="{homeView>documentation}"
+							target="_blank"
+							text="{i18n>homeDocumentation}"/>
 						<Link
-								href="{homeView>demo}"
-								visible="{= ${homeView>demo} === undefined ? false : true }"
-								target="_blank"
-								text="Demo"/>
+							href="{homeView>demo}"
+							visible="{= ${homeView>demo} === undefined ? false : true }"
+							target="_blank"
+							text="{i18n>homeDemo}"/>
 					</layout:VerticalLayout>
 				</cells>
 			</ColumnListItem>

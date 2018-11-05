@@ -1,12 +1,10 @@
 sap.ui.define([
-	] , function () {
-		"use strict";
+	"sap/base/strings/formatMessage",
+], function (formatMessage) {
+	"use strict";
 
-		return {
+	return {
+		formatMessage: formatMessage
+	};
 
-
-
-		};
-
-	}
-);
+});

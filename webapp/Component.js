@@ -27,7 +27,7 @@ sap.ui.define([
 			this.setModel(models.createDeviceModel(), "device");
 
 			// set up a model that loads samples based on metadata
-			var oSampleModel = new SampleModel();
+			var oSampleModel = new SampleModel(this.getModel("i18n"));
 			this.setModel(oSampleModel);
 
 			// We resolve the helper promise on component level when the promise in the icon model is resolved.
@@ -85,7 +85,7 @@ sap.ui.define([
 		getContentDensityClass : function() {
 			if (this._sContentDensityClass === undefined) {
 				// check whether FLP has already set the content density class; do nothing in this case
-				if (jQuery(document.body).hasClass("sapUiSizeCozy") || jQuery(document.body).hasClass("sapUiSizeCompact")) {
+				if (document.body.classList.contains("sapUiSizeCozy") || document.body.classList.contains("sapUiSizeCompact")) {
 					this._sContentDensityClass = "";
 				} else if (!Device.support.touch) { // apply "compact" mode if touch is not supported
 					this._sContentDensityClass = "sapUiSizeCompact";
