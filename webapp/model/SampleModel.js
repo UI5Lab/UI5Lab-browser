@@ -1,9 +1,8 @@
 sap.ui.define([
-	"sap/ui/thirdparty/jquery",
 	"sap/base/Log",
 	"sap/ui/model/json/JSONModel",
 	"sap/m/MessageBox"
-], function (jQuery, Log, JSONModel, MessageBox) {
+], function (Log, JSONModel, MessageBox) {
 	"use strict";
 
 	return JSONModel.extend("ui5lab.browser.model.SampleModel", {
@@ -21,12 +20,9 @@ sap.ui.define([
 			JSONModel.apply(this, arguments);
 			this.setSizeLimit(10000);
 
-			// set up the JSON model data in a timeout to not block the UI while loading the app
-			setTimeout(function () {
-				this._iStartTime = new Date().getTime();
-				this._loadLibraries();
-			}.bind(this), 0);
-
+			// set up the JSON model data to not block the UI while loading the app
+			this._iStartTime = new Date().getTime();
+			this._loadLibraries();
 			return this;
 		},
 
@@ -53,36 +49,39 @@ sap.ui.define([
 		 * @private
 		 */
 		_loadLibraries: function () {
-			var oMetadataLoaded = new Promise(function(fnResolve, fnReject) {
-				// TODO:
-				// * this needs to be replaced by a dynamic discovery servlet
-				// * nobody wants to configure redundant metadata
+			fetch(sap.ui.require.toUrl("ui5lab/browser/libraries.json"))
+				.then(function(response) {
+					return response.json();
+				})
+				.then(this._loadMetadata.bind(this))
+				.then(this._onMetadataLoaded.bind(this))
+				.catch(this._onError.bind(this));
+		},
 
-				// load library metadata file asynchronously
-				jQuery.ajax(sap.ui.require.toUrl("ui5lab/browser/libraries.json"), {
-					dataType: "json",
-					success: function (oData) {
-						var aLibraries = oData.libraries;
-						this._oMetadata = {};
-						this._iLibraryCount = aLibraries.length;
-						this._iLibraryLoadedCount = 0;
+		/**
+		 * Load library metadata
+		 * @private
+		 */
+		_loadMetadata: function (librariesFile) {
+			const aLibraries = librariesFile.libraries;
+			this._oMetadata = {};
+			this._iLibraryCount = aLibraries.length;
+			this._iLibraryLoadedCount = 0;
 
-						if (aLibraries.length > 0) {
-							for (var i = 0; i < aLibraries.length; i++) {
-								this._loadSamples(aLibraries[i], fnResolve);
-							}
-						} else {
-							// display hint
-							MessageBox.information(this._oResourceBundle.getText("noLibrariesConfigured"));
-							fnResolve();
-						}
-					}.bind(this),
-					error: fnReject
-				});
-			}.bind(this));
-
-			// process data once both models are loaded
-			oMetadataLoaded.then(this._onMetadataLoaded.bind(this), this._onError.bind(this));
+			if (aLibraries.length > 0) {
+				for (let i = 0; i < aLibraries.length; i++) {
+					if (aLibraries[i] instanceof String) {
+						//Keeping it just to be retrocompatible
+						this._loadSamples(aLibraries[i], fnResolve);
+					} else {
+						const libraryKey = Object.keys(aLibraries[i])[0];
+						this._oMetadata[libraryKey] = aLibraries[i][libraryKey];
+						this._iLibraryLoadedCount++;
+					}
+				}
+			} else {
+				MessageBox.information(this._oResourceBundle.getText("noLibrariesConfigured"));
+			}
 		},
 
 		/**
@@ -140,11 +139,11 @@ sap.ui.define([
 		 */
 		_processMetadata: function (oMetadata) {
 			var oModelData = {
-				libraries: [],
-				assets: [],
-				samples: []
-			},
-			aLibraryNames = oMetadata;
+					libraries: [],
+					assets: [],
+					samples: []
+				},
+				aLibraryNames = oMetadata;
 
 			var aLibraryNames = Object.keys(aLibraryNames);
 			for (var i = 0; i < aLibraryNames.length; i++) {
