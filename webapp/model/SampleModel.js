@@ -50,8 +50,8 @@ sap.ui.define([
 		 */
 		_loadLibraries: function () {
 			fetch(sap.ui.require.toUrl("ui5lab/browser/libraries.json"))
-				.then(function(response) {
-					return response.json();
+				.then(function(oResponse) {
+					return oResponse.json();
 				})
 				.then(this._loadMetadata.bind(this))
 				.then(this._onMetadataLoaded.bind(this))
@@ -63,25 +63,32 @@ sap.ui.define([
 		 * @private
 		 */
 		_loadMetadata: function (librariesFile) {
-			const aLibraries = librariesFile.libraries;
-			this._oMetadata = {};
-			this._iLibraryCount = aLibraries.length;
-			this._iLibraryLoadedCount = 0;
+			return new Promise(function (fnResolve, fnReject) {
+				const aLibraries = librariesFile.libraries;
+				this._oMetadata = {};
+				this._iLibraryCount = aLibraries.length;
+				this._iLibraryLoadedCount = 0;
 
-			if (aLibraries.length > 0) {
-				for (let i = 0; i < aLibraries.length; i++) {
-					if (typeof aLibraries[i] === "string") {
-						//Keeping it just to be retrocompatible
-						this._loadSamples(aLibraries[i], fnResolve);
-					} else {
-						const libraryKey = Object.keys(aLibraries[i])[0];
-						this._oMetadata[libraryKey] = aLibraries[i][libraryKey];
-						this._iLibraryLoadedCount++;
+				if (aLibraries.length > 0) {
+					for (let i = 0; i < aLibraries.length; i++) {
+						if (typeof aLibraries[i] === "string") {
+							//Keeping it just to be retrocompatible
+							this._loadSamples(aLibraries[i], fnResolve);
+						} else {
+							const libraryKey = Object.keys(aLibraries[i])[0];
+							this._oMetadata[libraryKey] = aLibraries[i][libraryKey];
+							this._iLibraryLoadedCount++;
+							// resolve the outer promise when all libs are loaded
+							if (this._iLibraryCount === this._iLibraryLoadedCount) {
+								fnResolve();
+							}
+
+						}
 					}
+				} else {
+					MessageBox.information(this._oResourceBundle.getText("noLibrariesConfigured"));
 				}
-			} else {
-				MessageBox.information(this._oResourceBundle.getText("noLibrariesConfigured"));
-			}
+			}.bind(this));
 		},
 
 		/**
