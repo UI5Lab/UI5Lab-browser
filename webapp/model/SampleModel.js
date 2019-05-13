@@ -70,7 +70,7 @@ sap.ui.define([
 
 			if (aLibraries.length > 0) {
 				for (let i = 0; i < aLibraries.length; i++) {
-					if (aLibraries[i] instanceof String) {
+					if (typeof aLibraries[i] === "string") {
 						//Keeping it just to be retrocompatible
 						this._loadSamples(aLibraries[i], fnResolve);
 					} else {
