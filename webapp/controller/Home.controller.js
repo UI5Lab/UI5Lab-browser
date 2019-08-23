@@ -56,16 +56,22 @@ sap.ui.define([
 		onSearch: function (oEvent) {
 			var sQuery = (oEvent ? oEvent.getParameter("newValue") : this.getModel("homeView").getProperty("/query")),
 				oSubView = this.byId("projects").getContent()[0];
-
+			var filters = new Filter({
+				filters: [
+					new Filter("name", FilterOperator.Contains, sQuery),
+					new Filter("keywords", FilterOperator.Contains, sQuery)
+				],
+				and: false,
+			});
 			// store query for switching views without loosing the filter
 			this.getModel("homeView").setProperty("/query", sQuery);
 
 			if (oSubView.byId("table")) {
-				oSubView.byId("table").getBinding("items").filter(new Filter("name", FilterOperator.Contains, sQuery));
+				oSubView.byId("table").getBinding("items").filter(filters);
 			} else {
 				// filter each row
 				oSubView.byId("grid").getContent().forEach(function (oRow) {
-					oRow.getBinding("content").filter(new Filter("name", FilterOperator.Contains, sQuery));
+					oRow.getBinding("content").filter(filters);
 				});
 				// show/hide no data text if needed
 				setTimeout(function() {
