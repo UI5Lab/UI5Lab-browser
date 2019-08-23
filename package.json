@@ -14,14 +14,14 @@
     "build": "ui5 build"
   },
   "dependencies": {
-    "@openui5/sap.f": "^1.60.1",
-    "@openui5/sap.m": "^1.60.1",
-    "@openui5/sap.ui.core": "^1.60.1",
-    "@openui5/sap.ui.layout": "^1.60.1",
-    "@openui5/themelib_sap_belize": "^1.60.1"
+    "@openui5/sap.f": "^1.69.1",
+    "@openui5/sap.m": "^1.69.1",
+    "@openui5/sap.ui.core": "^1.69.1",
+    "@openui5/sap.ui.layout": "^1.69.1",
+    "@openui5/themelib_sap_belize": "^1.69.1"
   },
   "devDependencies": {
-    "@ui5/cli": "^1.4.2",
-    "eslint": "^5.16.0"
+    "@ui5/cli": "^1.7.0",
+    "eslint": "^6.2.1"
   }
 }
