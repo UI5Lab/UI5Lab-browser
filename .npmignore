@@ -4,6 +4,7 @@ node_modules/
 .eslintrc
 .eslintignore
 .idea
+.vscode
 
 # only for testing, these resources should not be delivered but are easy to forget
 dist/resources/
