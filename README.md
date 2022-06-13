@@ -39,7 +39,7 @@ npm start
 
 > **Note:** To test the browser, one or more libraries should be defined as a dependency and registered in the libraries.json file. See the ```gh-pages``` branch of UI5Lab-central project for a live example
 
-#### Publishing the to npm
+#### Publishing to npm
 
 The library project and the central project reference the browser via npm module. In order to publish a new version to npm follow these steps:
 
