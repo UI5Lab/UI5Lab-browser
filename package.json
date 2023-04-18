@@ -21,7 +21,7 @@
     "@openui5/themelib_sap_belize": "^1.71.46"
   },
   "devDependencies": {
-    "@ui5/cli": "^2.14.9",
+    "@ui5/cli": "^3.0.7",
     "eslint": "^8.17.0"
   }
 }
