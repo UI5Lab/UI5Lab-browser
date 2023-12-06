@@ -97,7 +97,7 @@ sap.ui.define([
 		 * Redirects to the official documentation of UI5Lab project
 		 */
 		onHelp : function () {
-			MobileLibrary.URLHelper.redirect("https://ui5lab.io/docs/", true);
+			MobileLibrary.URLHelper.redirect("https://ui5lab.github.io/UI5Lab-central/docs/", true);
 		},
 
 		/* =========================================================== */
